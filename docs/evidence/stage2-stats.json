@@ -1,0 +1,771 @@
+[
+  {
+    "id": "ses_e97404953ffe3P8XAnz1J25WPx",
+    "agent": "ba-architect",
+    "title": "启动阶段：商业论证/章程/干系人",
+    "wall_ms": 145038,
+    "model_ms": 144887,
+    "tool_ms": 1523,
+    "assistant_messages": 11,
+    "tools_total": 12,
+    "tools_failed": 1,
+    "fail_rate": 0.0833,
+    "tokens": {
+      "input": 27127,
+      "output": 6481,
+      "reasoning": 8260,
+      "cache_read": 165760,
+      "cache_write": 0,
+      "total": 207628
+    },
+    "by_tool": {
+      "read": {
+        "calls": 5,
+        "failed": 0,
+        "ms": 84
+      },
+      "grep": {
+        "calls": 1,
+        "failed": 0,
+        "ms": 762
+      },
+      "shell": {
+        "calls": 2,
+        "failed": 1,
+        "ms": 490
+      },
+      "glob": {
+        "calls": 1,
+        "failed": 0,
+        "ms": 135
+      },
+      "write": {
+        "calls": 3,
+        "failed": 0,
+        "ms": 52
+      }
+    },
+    "tools": [
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 16
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 14
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 20
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 18
+      },
+      {
+        "name": "grep",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 762
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 16
+      },
+      {
+        "name": "shell",
+        "outcome": "failed",
+        "exit": null,
+        "ms": 9
+      },
+      {
+        "name": "glob",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 135
+      },
+      {
+        "name": "write",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 8
+      },
+      {
+        "name": "write",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 9
+      },
+      {
+        "name": "write",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 35
+      },
+      {
+        "name": "shell",
+        "outcome": "ok",
+        "exit": 0,
+        "ms": 481
+      }
+    ]
+  },
+  {
+    "id": "ses_e973da747ffehz6lRDWf0C1aHE",
+    "agent": "ccb-sponsor",
+    "title": "评审批复项目章程与商业论证",
+    "wall_ms": 26837,
+    "model_ms": 26805,
+    "tool_ms": 37,
+    "assistant_messages": 2,
+    "tools_total": 2,
+    "tools_failed": 0,
+    "fail_rate": 0.0,
+    "tokens": {
+      "input": 9096,
+      "output": 1268,
+      "reasoning": 2215,
+      "cache_read": 4736,
+      "cache_write": 0,
+      "total": 17315
+    },
+    "by_tool": {
+      "read": {
+        "calls": 2,
+        "failed": 0,
+        "ms": 37
+      }
+    },
+    "tools": [
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 21
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 16
+      }
+    ]
+  },
+  {
+    "id": "ses_e973cf092ffeKxPZOxwmK3wwpv",
+    "agent": "ba-architect",
+    "title": "按CCB条件出v1.1",
+    "wall_ms": 171850,
+    "model_ms": 171516,
+    "tool_ms": 493,
+    "assistant_messages": 26,
+    "tools_total": 29,
+    "tools_failed": 1,
+    "fail_rate": 0.0345,
+    "tokens": {
+      "input": 26275,
+      "output": 6421,
+      "reasoning": 6486,
+      "cache_read": 482176,
+      "cache_write": 0,
+      "total": 521358
+    },
+    "by_tool": {
+      "read": {
+        "calls": 14,
+        "failed": 0,
+        "ms": 205
+      },
+      "grep": {
+        "calls": 1,
+        "failed": 0,
+        "ms": 139
+      },
+      "edit": {
+        "calls": 13,
+        "failed": 0,
+        "ms": 143
+      },
+      "shell": {
+        "calls": 1,
+        "failed": 1,
+        "ms": 6
+      }
+    },
+    "tools": [
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 21
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 16
+      },
+      {
+        "name": "grep",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 139
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 17
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 13
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 16
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 15
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 14
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 13
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 13
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 10
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 8
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 6
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 11
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 18
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 21
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 18
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 5
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 15
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 19
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 8
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 5
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 16
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 14
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 12
+      },
+      {
+        "name": "shell",
+        "outcome": "failed",
+        "exit": null,
+        "ms": 6
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 8
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 9
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 7
+      }
+    ]
+  },
+  {
+    "id": "ses_e972f7fd1ffe8n7PjfmtcjGtoh",
+    "agent": "ba-architect",
+    "title": "规划：范围与架构契约",
+    "wall_ms": 120132,
+    "model_ms": 119974,
+    "tool_ms": 1054,
+    "assistant_messages": 12,
+    "tools_total": 17,
+    "tools_failed": 2,
+    "fail_rate": 0.1176,
+    "tokens": {
+      "input": 24612,
+      "output": 8052,
+      "reasoning": 6326,
+      "cache_read": 177664,
+      "cache_write": 0,
+      "total": 216654
+    },
+    "by_tool": {
+      "read": {
+        "calls": 4,
+        "failed": 0,
+        "ms": 116
+      },
+      "grep": {
+        "calls": 3,
+        "failed": 0,
+        "ms": 478
+      },
+      "shell": {
+        "calls": 2,
+        "failed": 2,
+        "ms": 15
+      },
+      "glob": {
+        "calls": 3,
+        "failed": 0,
+        "ms": 360
+      },
+      "write": {
+        "calls": 2,
+        "failed": 0,
+        "ms": 24
+      },
+      "edit": {
+        "calls": 3,
+        "failed": 0,
+        "ms": 61
+      }
+    },
+    "tools": [
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 35
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 33
+      },
+      {
+        "name": "grep",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 167
+      },
+      {
+        "name": "grep",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 158
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 25
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 23
+      },
+      {
+        "name": "shell",
+        "outcome": "failed",
+        "exit": null,
+        "ms": 3
+      },
+      {
+        "name": "glob",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 116
+      },
+      {
+        "name": "glob",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 116
+      },
+      {
+        "name": "write",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 13
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 24
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 31
+      },
+      {
+        "name": "write",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 11
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 6
+      },
+      {
+        "name": "shell",
+        "outcome": "failed",
+        "exit": null,
+        "ms": 12
+      },
+      {
+        "name": "grep",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 153
+      },
+      {
+        "name": "glob",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 128
+      }
+    ]
+  },
+  {
+    "id": "ses_e972c12dbffe4Fot0SK8t1Iti5",
+    "agent": "ba-architect",
+    "title": "规划：WBS与风险质量计划",
+    "wall_ms": 102137,
+    "model_ms": 101984,
+    "tool_ms": 859,
+    "assistant_messages": 12,
+    "tools_total": 15,
+    "tools_failed": 1,
+    "fail_rate": 0.0667,
+    "tokens": {
+      "input": 51298,
+      "output": 6844,
+      "reasoning": 2553,
+      "cache_read": 218368,
+      "cache_write": 0,
+      "total": 279063
+    },
+    "by_tool": {
+      "read": {
+        "calls": 6,
+        "failed": 0,
+        "ms": 154
+      },
+      "glob": {
+        "calls": 3,
+        "failed": 0,
+        "ms": 283
+      },
+      "write": {
+        "calls": 2,
+        "failed": 0,
+        "ms": 29
+      },
+      "shell": {
+        "calls": 1,
+        "failed": 1,
+        "ms": 13
+      },
+      "grep": {
+        "calls": 2,
+        "failed": 0,
+        "ms": 371
+      },
+      "edit": {
+        "calls": 1,
+        "failed": 0,
+        "ms": 9
+      }
+    },
+    "tools": [
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 45
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 43
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 23
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 22
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 13
+      },
+      {
+        "name": "glob",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 105
+      },
+      {
+        "name": "write",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 11
+      },
+      {
+        "name": "write",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 18
+      },
+      {
+        "name": "shell",
+        "outcome": "failed",
+        "exit": null,
+        "ms": 13
+      },
+      {
+        "name": "grep",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 244
+      },
+      {
+        "name": "grep",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 127
+      },
+      {
+        "name": "glob",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 81
+      },
+      {
+        "name": "edit",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 9
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 8
+      },
+      {
+        "name": "glob",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 97
+      }
+    ]
+  },
+  {
+    "id": "ses_e9724a577ffeg7bo5aIKrXLEWX",
+    "agent": "ccb-sponsor",
+    "title": "规划基线评审",
+    "wall_ms": 79341,
+    "model_ms": 79248,
+    "tool_ms": 149,
+    "assistant_messages": 7,
+    "tools_total": 10,
+    "tools_failed": 0,
+    "fail_rate": 0.0,
+    "tokens": {
+      "input": 30490,
+      "output": 1887,
+      "reasoning": 8049,
+      "cache_read": 111488,
+      "cache_write": 0,
+      "total": 151914
+    },
+    "by_tool": {
+      "read": {
+        "calls": 10,
+        "failed": 0,
+        "ms": 149
+      }
+    },
+    "tools": [
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 22
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 20
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 13
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 14
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 21
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 19
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 9
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 9
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 7
+      },
+      {
+        "name": "read",
+        "outcome": "ok",
+        "exit": null,
+        "ms": 15
+      }
+    ]
+  }
+]
