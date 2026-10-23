@@ -26,7 +26,7 @@
 
 运行期文件（不提交 git 亦可）：数据库 `data/deviceloan.db`（默认，`--db` 参数或环境变量 `DEVICELOAN_DB` 覆盖，QA 用独立库文件实现 NFR-05 隔离）；会话文件 `data/session.json`（登录后写入 `username`、`role`、`created_at`）。
 
-会话判定规则（供 TC-CRQ-01-01 与权限矩阵的 `✗ 3` 使用）：会话无过期时间，`login` 直接覆盖写；除 `init-db`、`seed`、`login` 三条本地运维/登录命令外，缺少会话文件或会话角色与命令要求不符，一律返回退出码 3，不读业务表。
+会话判定规则（供 TC-CRQ-01-01 与权限矩阵的 `✗ 3` 使用）：会话无过期时间，`login` 直接覆盖写；除 `init-db`、`seed`、`login` 三条本地运维/登录命令外，缺少会话文件或会话角色与命令要求不符，一律返回退出码 3，不读业务表。参数校验先于会话校验：参数不合法（缺必填、取值不在枚举内、时间格式错误）一律返回 2，即使未登录。
 
 依赖方向：`main.py` → 各业务模块 → `db.py`；`auth.py`、`audit.py` 被业务模块调用，不反向依赖 `main.py`。
 
@@ -113,6 +113,9 @@
 1. 时段按半开区间 `[start, end)` 判定。
 2. 冲突条件：`new.start < existing.end AND new.end > existing.start`。
 3. 只对同一 `device_id`、且状态为 `approved` 的 `requests`，以及该设备未归还的 `loans`（`returned_at IS NULL`）做判定。
+   - `requests` 按申请自身的 `[start_at, end_at)` 占位。
+   - **未归还的 `loans` 为无结束时间的占用**：只要 `new.end > checked_out_at` 即冲突（不看 `due_at`）。理由：设备没还回来，后续任何时段都不能再批准，否则会出现"已逾期未还却被再次批准"。归还后（`returned_at` 非空）该占用立即解除。
+   - 同一条申请与其对应借出记录只计 1 次冲突。
 4. `rejected` / `cancelled` 不占用时段；`pending` 不占用（多条 pending 可并存，由审批时兜底）。
 5. 首尾相接（前一段 `end == 后一段 start`）**不算冲突**。
 6. 只在 `request approve` 时判定；`request submit` 不做冲突判定，避免出现两套口径。

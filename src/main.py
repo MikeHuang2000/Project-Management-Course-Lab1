@@ -8,6 +8,7 @@ import sys
 import audit
 import auth
 import db
+import devices
 
 SEED_PASSWORD = "Passw0rd!"
 
@@ -124,6 +125,43 @@ def cmd_login(args):
     return result
 
 
+def require_session(conn):
+    user = auth.current_user(conn)
+    if user is None:
+        raise CLIError(3, "not_logged_in", "请先登录")
+    return user
+
+
+def cmd_device_list(args):
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    require_session(conn)
+    items = devices.list_devices(conn, category=args.category, status=args.status)
+    conn.close()
+    return {"items": items}
+
+
+def cmd_device_search(args):
+    if bool(args.from_) != bool(args.to_):
+        raise CLIError(2, "bad_args", "--from 与 --to 必须成对出现")
+    if not (args.name or args.category or args.from_ or args.to_):
+        raise CLIError(2, "bad_args", "至少提供 --name、--category、--from/--to 之一")
+    start = devices.normalize_iso(args.from_)
+    end = devices.normalize_iso(args.to_)
+    if (args.from_ and start is None) or (args.to_ and end is None):
+        raise CLIError(2, "bad_args", "时间格式非法，应为 ISO 8601")
+    if start and end and end <= start:
+        raise CLIError(2, "bad_args", "结束时间必须晚于开始时间")
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    require_session(conn)
+    items = devices.search_devices(
+        conn, name=args.name, category=args.category, start=start, end=end
+    )
+    conn.close()
+    return {"items": items}
+
+
 def build_parser():
     parser = Parser(prog="deviceloan", description="设备借用管理系统")
     parser.add_argument("--db", dest="db", default=None, help="数据库文件路径")
@@ -143,6 +181,26 @@ def build_parser():
     p.add_argument("--username", required=True)
     p.add_argument("--password", required=True)
     p.set_defaults(handler=cmd_login)
+
+    p = sub.add_parser("device", help="设备目录查询")
+    p.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    dsub = p.add_subparsers(dest="device_command", required=True)
+
+    d = dsub.add_parser("list", help="设备列表")
+    d.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    d.add_argument("--category")
+    d.add_argument(
+        "--status", choices=("available", "maintenance", "retired")
+    )
+    d.set_defaults(handler=cmd_device_list)
+
+    d = dsub.add_parser("search", help="按名称/类别/时段检索")
+    d.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    d.add_argument("--name")
+    d.add_argument("--category")
+    d.add_argument("--from", dest="from_")
+    d.add_argument("--to", dest="to_")
+    d.set_defaults(handler=cmd_device_search)
 
     return parser
 
