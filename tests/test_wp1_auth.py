@@ -329,18 +329,37 @@ class WP1CliTest(unittest.TestCase):
         wp1_files = {"main.py", "db.py", "auth.py", "audit.py"}
         self.assertTrue(wp1_files.issubset(seen), "WP1 模块未被扫描到: %s" % (wp1_files - seen))
 
-    # ---- WP1「不做什么」：未实现命令不注册 ----
-    def test_wp1_unimplemented_commands_not_registered(self):
-        """WP1 明确"未实现就不注册该子命令"，故 request/device 等此时不可调用。
+    # ---- 命令注册：WP3 之后 request list 已注册，无会话 → 3 ----
+    def test_wp1_wp3_commands_registered_and_require_session(self):
+        """WP3 已完成，`request list` 按契约 §4 注册；无会话调用走会话判定 → 3。
 
-        注：WP1 卡片的退出标准写有"无会话调 request list 退出码 3"，与"不注册"矛盾；
-        本用例记录实际行为（argparse 未知子命令 → 2），该矛盾上报 PM/BA。
+        WP1 时期的旧断言（未注册 → 2）与被测契约矛盾，已在 QA3 修订为契约口径。
         """
         proc = self.cli("request", "list")
-        self.assertNotEqual(proc.returncode, 0, proc.stdout + proc.stderr)
-        self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+        self.assertEqual(proc.returncode, 3, "无会话应退出码 3: " + proc.stdout + proc.stderr)
         body = self.payload(proc)
         self.assertIn("error", body)
+        self.assertEqual(body["error"], "not_logged_in")
+
+        # 参数校验先于会话校验（契约 §1 末段）：缺 --request-id → 2，即使未登录
+        proc = self.cli("request", "approve", "--db", self.db)
+        self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+        self.assertIn("error", self.payload(proc))
+
+    # ---- TC-NFR-04-01 端到端：student 调 admin 命令 → 3 ----
+    def test_tc_nfr_04_01_student_calling_admin_command_exits_3(self):
+        self.seed()
+        login = self.cli(
+            "login", "--db", self.db, "--username", "student1",
+            "--password", SEED_PASSWORD,
+        )
+        self.assertEqual(login.returncode, 0, login.stdout + login.stderr)
+
+        proc = self.cli("request", "approve", "--db", self.db, "--request-id", "1")
+        self.assertEqual(proc.returncode, 3, proc.stdout + proc.stderr)
+        body = self.payload(proc)
+        self.assertEqual(body["error"], "forbidden")
+        self.assertEqual(self.query("SELECT count(*) FROM requests WHERE status='approved'")[0][0], 0)
 
 
 if __name__ == "__main__":

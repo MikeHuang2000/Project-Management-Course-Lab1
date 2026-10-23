@@ -9,6 +9,8 @@ import audit
 import auth
 import db
 import devices
+import loans
+import requests
 
 SEED_PASSWORD = "Passw0rd!"
 
@@ -162,8 +164,104 @@ def cmd_device_search(args):
     return {"items": items}
 
 
+def cmd_request_submit(args):
+    start = devices.normalize_iso(args.from_)
+    end = devices.normalize_iso(args.to_)
+    if start is None or end is None:
+        raise CLIError(2, "bad_args", "时间格式非法，应为 ISO 8601")
+    if start >= end:
+        raise CLIError(2, "bad_args", "结束时间必须晚于开始时间")
+    purpose = args.purpose.strip()
+    if not purpose:
+        raise CLIError(2, "bad_args", "用途不能为空")
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        return requests.submit(conn, user, args.device, start, end, purpose)
+    finally:
+        conn.close()
+
+
+def cmd_request_cancel(args):
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        return requests.cancel(conn, user, args.request_id)
+    finally:
+        conn.close()
+
+
+def cmd_request_list(args):
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        items = requests.list_requests(
+            conn, user, status=args.status, show_all=args.all
+        )
+    finally:
+        conn.close()
+    return {"items": items}
+
+
+def cmd_request_show(args):
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        return requests.show(conn, user, args.request_id)
+    finally:
+        conn.close()
+
+
+def cmd_request_approve(args):
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        return requests.approve(conn, user, args.request_id)
+    finally:
+        conn.close()
+
+
+def cmd_request_reject(args):
+    reason = args.reason.strip()
+    if not reason:
+        raise CLIError(2, "bad_args", "拒绝原因不能为空")
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        return requests.reject(conn, user, args.request_id, reason)
+    finally:
+        conn.close()
+
+
+def cmd_loan_checkout(args):
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        return loans.checkout(conn, user, args.request_id)
+    finally:
+        conn.close()
+
+
+def cmd_loan_return(args):
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        return loans.return_loan(conn, user, args.loan_id)
+    finally:
+        conn.close()
+
+
 def build_parser():
     parser = Parser(prog="deviceloan", description="设备借用管理系统")
+
     parser.add_argument("--db", dest="db", default=None, help="数据库文件路径")
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -202,6 +300,61 @@ def build_parser():
     d.add_argument("--to", dest="to_")
     d.set_defaults(handler=cmd_device_search)
 
+    p = sub.add_parser("request", help="借用申请")
+    p.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    rsub = p.add_subparsers(dest="request_command", required=True)
+
+    r = rsub.add_parser("submit", help="提交申请")
+    r.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    r.add_argument("--device", required=True)
+    r.add_argument("--from", dest="from_", required=True)
+    r.add_argument("--to", dest="to_", required=True)
+    r.add_argument("--purpose", required=True)
+    r.set_defaults(handler=cmd_request_submit)
+
+    r = rsub.add_parser("cancel", help="取消本人待审批申请")
+    r.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    r.add_argument("--request-id", dest="request_id", type=int, required=True)
+    r.set_defaults(handler=cmd_request_cancel)
+
+    r = rsub.add_parser("list", help="申请列表")
+    r.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    r.add_argument(
+        "--status", choices=("pending", "approved", "rejected", "cancelled")
+    )
+    r.add_argument("--all", action="store_true", help="查看全部（仅管理员）")
+    r.set_defaults(handler=cmd_request_list)
+
+    r = rsub.add_parser("show", help="申请详情")
+    r.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    r.add_argument("--request-id", dest="request_id", type=int, required=True)
+    r.set_defaults(handler=cmd_request_show)
+
+    r = rsub.add_parser("approve", help="批准申请")
+    r.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    r.add_argument("--request-id", dest="request_id", type=int, required=True)
+    r.set_defaults(handler=cmd_request_approve)
+
+    r = rsub.add_parser("reject", help="拒绝申请")
+    r.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    r.add_argument("--request-id", dest="request_id", type=int, required=True)
+    r.add_argument("--reason", required=True)
+    r.set_defaults(handler=cmd_request_reject)
+
+    p = sub.add_parser("loan", help="借出与归还")
+    p.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    lsub = p.add_subparsers(dest="loan_command", required=True)
+
+    l = lsub.add_parser("checkout", help="登记借出")
+    l.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    l.add_argument("--request-id", dest="request_id", type=int, required=True)
+    l.set_defaults(handler=cmd_loan_checkout)
+
+    l = lsub.add_parser("return", help="登记归还")
+    l.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    l.add_argument("--loan-id", dest="loan_id", type=int, required=True)
+    l.set_defaults(handler=cmd_loan_return)
+
     return parser
 
 
@@ -212,6 +365,15 @@ def main(argv=None):
     try:
         payload = args.handler(args)
     except CLIError as exc:
+        fail(exc.code, exc.error, exc.message)
+        return exc.code
+    except requests.TimeConflict as exc:
+        emit({"error": "time_conflict", "conflicts": exc.conflicts})
+        return 4
+    except requests.RequestError as exc:
+        fail(exc.code, exc.error, exc.message)
+        return exc.code
+    except loans.LoanError as exc:
         fail(exc.code, exc.error, exc.message)
         return exc.code
     except sqlite3.Error as exc:
