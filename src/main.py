@@ -11,6 +11,7 @@ import db
 import devices
 import loans
 import requests
+import stats
 
 SEED_PASSWORD = "Passw0rd!"
 
@@ -259,6 +260,70 @@ def cmd_loan_return(args):
         conn.close()
 
 
+def cmd_stats_usage(args):
+    start = devices.normalize_iso(args.from_)
+    end = devices.normalize_iso(args.to_)
+    if start is None or end is None:
+        raise CLIError(2, "bad_args", "时间格式非法，应为 ISO 8601")
+    if end <= start:
+        raise CLIError(2, "bad_args", "结束时间必须晚于开始时间")
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        if user["role"] not in ("admin", "director"):
+            raise CLIError(3, "forbidden", "仅管理员或主任可查看统计")
+        return stats.usage(conn, start, end)
+    finally:
+        conn.close()
+
+
+def cmd_stats_overdue(args):
+    start = devices.normalize_iso(args.from_)
+    end = devices.normalize_iso(args.to_)
+    if (args.from_ and start is None) or (args.to_ and end is None):
+        raise CLIError(2, "bad_args", "时间格式非法，应为 ISO 8601")
+    if start and end and end <= start:
+        raise CLIError(2, "bad_args", "结束时间必须晚于开始时间")
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        if user["role"] not in ("admin", "director"):
+            raise CLIError(3, "forbidden", "仅管理员或主任可查看统计")
+        return stats.overdue(conn, start, end)
+    finally:
+        conn.close()
+
+
+def cmd_audit_list(args):
+    start = devices.normalize_iso(args.from_)
+    end = devices.normalize_iso(args.to_)
+    if (args.from_ and start is None) or (args.to_ and end is None):
+        raise CLIError(2, "bad_args", "时间格式非法，应为 ISO 8601")
+    if start and end and end <= start:
+        raise CLIError(2, "bad_args", "结束时间必须晚于开始时间")
+    if args.limit < 1:
+        raise CLIError(2, "bad_args", "--limit 必须为正整数")
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        if user["role"] != "admin":
+            raise CLIError(3, "forbidden", "仅管理员可查询审计日志")
+        items = audit.list_entries(
+            conn,
+            action=args.action,
+            user=args.user,
+            start=start,
+            end=end,
+            limit=args.limit,
+        )
+    finally:
+        conn.close()
+    return {"items": items}
+
+
 def build_parser():
     parser = Parser(prog="deviceloan", description="设备借用管理系统")
 
@@ -354,6 +419,35 @@ def build_parser():
     l.add_argument("--db", dest="db", default=argparse.SUPPRESS)
     l.add_argument("--loan-id", dest="loan_id", type=int, required=True)
     l.set_defaults(handler=cmd_loan_return)
+
+    p = sub.add_parser("stats", help="借用统计")
+    p.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    ssub = p.add_subparsers(dest="stats_command", required=True)
+
+    s = ssub.add_parser("usage", help="借用次数、逾期率与利用率")
+    s.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    s.add_argument("--from", dest="from_", required=True)
+    s.add_argument("--to", dest="to_", required=True)
+    s.set_defaults(handler=cmd_stats_usage)
+
+    s = ssub.add_parser("overdue", help="逾期清单")
+    s.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    s.add_argument("--from", dest="from_")
+    s.add_argument("--to", dest="to_")
+    s.set_defaults(handler=cmd_stats_overdue)
+
+    p = sub.add_parser("audit", help="审计日志")
+    p.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    asub = p.add_subparsers(dest="audit_command", required=True)
+
+    a = asub.add_parser("list", help="查询审计记录")
+    a.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    a.add_argument("--action")
+    a.add_argument("--user")
+    a.add_argument("--from", dest="from_")
+    a.add_argument("--to", dest="to_")
+    a.add_argument("--limit", type=int, default=50)
+    a.set_defaults(handler=cmd_audit_list)
 
     return parser
 

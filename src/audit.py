@@ -1,4 +1,4 @@
-"""审计日志写入（查询由 WP5 实现）。"""
+"""审计日志写入与查询。"""
 
 import json
 
@@ -21,3 +21,38 @@ def log(conn, actor, action, target, result, detail=None):
         " VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
         (now_iso(), actor_id, actor_name, action, target_type, target_id, detail, result),
     )
+
+
+def list_entries(conn, action=None, user=None, start=None, end=None, limit=50):
+    clauses = []
+    params = []
+    if action:
+        clauses.append("action = ?")
+        params.append(action)
+    if user:
+        clauses.append("actor_name = ?")
+        params.append(user)
+    if start:
+        clauses.append("at >= ?")
+        params.append(start)
+    if end:
+        clauses.append("at < ?")
+        params.append(end)
+    sql = (
+        "SELECT at, actor_name, action, target_type, target_id, result FROM audit_log"
+    )
+    if clauses:
+        sql += " WHERE " + " AND ".join(clauses)
+    sql += " ORDER BY at DESC, id DESC LIMIT ?"
+    params.append(limit)
+    return [
+        {
+            "at": row["at"],
+            "actor_name": row["actor_name"],
+            "action": row["action"],
+            "target_type": row["target_type"],
+            "target_id": row["target_id"],
+            "result": row["result"],
+        }
+        for row in conn.execute(sql, params).fetchall()
+    ]
