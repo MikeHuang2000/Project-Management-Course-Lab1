@@ -56,6 +56,11 @@ def checkout(conn, user, request_id):
     ).fetchone()
     if existing is not None:
         raise LoanError(1, "already_checked_out", "该申请已登记借出，不能重复借出")
+    device = conn.execute(
+        "SELECT status FROM devices WHERE id = ?", (request["device_id"],)
+    ).fetchone()
+    if device is None or device["status"] != "available":
+        raise LoanError(1, "device_unavailable", "设备当前不可借")
     checked_out_at = now_iso()
     with transaction(conn):
         cursor = conn.execute(

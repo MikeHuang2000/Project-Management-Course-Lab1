@@ -59,6 +59,8 @@
 | note | TEXT | 可空 | |
 | created_at | TEXT | NOT NULL | |
 
+设备状态检查：`request submit`、`request approve`、`loan checkout` 三处都必须校验设备 `status='available'`，否则拒绝（退出码 1，`device_unavailable`）。理由：提交后设备可能转入维护，审批或借出时不能只看提交时的状态。
+
 **requests**（状态机：`pending → approved | rejected | cancelled`，终态不可再变更）
 
 | 列 | 类型 | 约束 | 说明 |
