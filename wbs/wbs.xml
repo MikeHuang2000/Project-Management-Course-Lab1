@@ -17,12 +17,12 @@
       <WBS>1</WBS>
       <OutlineNumber>1</OutlineNumber>
       <OutlineLevel>1</OutlineLevel>
-      <Summary>1</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-02T08:00:00</Start>
       <Finish>2026-11-02T17:00:00</Finish>
       <Duration>PT20H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
+      <Milestone>0</Milestone>
+      <Summary>1</Summary>
     </Task>
     <Task>
       <UID>2</UID>
@@ -33,12 +33,12 @@
       <WBS>2</WBS>
       <OutlineNumber>2</OutlineNumber>
       <OutlineLevel>1</OutlineLevel>
-      <Summary>1</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-02T08:00:00</Start>
       <Finish>2026-11-02T17:00:00</Finish>
       <Duration>PT36H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
+      <Milestone>0</Milestone>
+      <Summary>1</Summary>
     </Task>
     <Task>
       <UID>3</UID>
@@ -49,12 +49,12 @@
       <WBS>3</WBS>
       <OutlineNumber>3</OutlineNumber>
       <OutlineLevel>1</OutlineLevel>
-      <Summary>1</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-02T08:00:00</Start>
       <Finish>2026-11-02T17:00:00</Finish>
       <Duration>PT86H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
+      <Milestone>0</Milestone>
+      <Summary>1</Summary>
     </Task>
     <Task>
       <UID>4</UID>
@@ -65,12 +65,12 @@
       <WBS>4</WBS>
       <OutlineNumber>4</OutlineNumber>
       <OutlineLevel>1</OutlineLevel>
-      <Summary>1</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-02T08:00:00</Start>
       <Finish>2026-11-02T17:00:00</Finish>
       <Duration>PT64H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
+      <Milestone>0</Milestone>
+      <Summary>1</Summary>
     </Task>
     <Task>
       <UID>5</UID>
@@ -81,12 +81,12 @@
       <WBS>5</WBS>
       <OutlineNumber>5</OutlineNumber>
       <OutlineLevel>1</OutlineLevel>
-      <Summary>1</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-02T08:00:00</Start>
       <Finish>2026-11-02T17:00:00</Finish>
       <Duration>PT8H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
+      <Milestone>0</Milestone>
+      <Summary>1</Summary>
     </Task>
     <Task>
       <UID>6</UID>
@@ -97,13 +97,13 @@
       <WBS>1.1</WBS>
       <OutlineNumber>1.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-02T08:00:00</Start>
       <Finish>2026-11-02T12:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>300.00</Cost>
       <ResourceNames>BA</ResourceNames>
     </Task>
@@ -116,13 +116,13 @@
       <WBS>1.2</WBS>
       <OutlineNumber>1.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-02T12:00:00</Start>
       <Finish>2026-11-03T08:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>300.00</Cost>
       <ResourceNames>BA</ResourceNames>
       <PredecessorLink>
@@ -141,13 +141,13 @@
       <WBS>1.3</WBS>
       <OutlineNumber>1.3</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-03T08:00:00</Start>
       <Finish>2026-11-03T12:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>300.00</Cost>
       <ResourceNames>BA</ResourceNames>
       <PredecessorLink>
@@ -166,13 +166,13 @@
       <WBS>1.4</WBS>
       <OutlineNumber>1.4</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-03T12:00:00</Start>
       <Finish>2026-11-04T08:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>250.00</Cost>
       <ResourceNames>CCB</ResourceNames>
       <PredecessorLink>
@@ -191,13 +191,13 @@
       <WBS>1.5</WBS>
       <OutlineNumber>1.5</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-04T08:00:00</Start>
       <Finish>2026-11-04T12:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>400.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>
@@ -216,13 +216,13 @@
       <WBS>2.1</WBS>
       <OutlineNumber>2.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-04T08:00:00</Start>
       <Finish>2026-11-04T14:00:00</Finish>
       <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT6H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>450.00</Cost>
       <ResourceNames>BA</ResourceNames>
       <PredecessorLink>
@@ -241,13 +241,13 @@
       <WBS>2.2</WBS>
       <OutlineNumber>2.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-04T14:00:00</Start>
       <Finish>2026-11-05T12:00:00</Finish>
       <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT6H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>450.00</Cost>
       <ResourceNames>BA</ResourceNames>
       <PredecessorLink>
@@ -266,13 +266,13 @@
       <WBS>2.3</WBS>
       <OutlineNumber>2.3</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-05T12:00:00</Start>
       <Finish>2026-11-06T08:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>300.00</Cost>
       <ResourceNames>BA</ResourceNames>
       <PredecessorLink>
@@ -291,13 +291,13 @@
       <WBS>2.4</WBS>
       <OutlineNumber>2.4</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-05T12:00:00</Start>
       <Finish>2026-11-06T12:00:00</Finish>
       <Duration>PT8H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT8H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>600.00</Cost>
       <ResourceNames>BA</ResourceNames>
       <PredecessorLink>
@@ -316,13 +316,13 @@
       <WBS>2.5</WBS>
       <OutlineNumber>2.5</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-06T08:00:00</Start>
       <Finish>2026-11-06T12:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>400.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>
@@ -347,13 +347,13 @@
       <WBS>2.6</WBS>
       <OutlineNumber>2.6</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-06T12:00:00</Start>
       <Finish>2026-11-09T12:00:00</Finish>
       <Duration>PT8H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT8H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>800.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>
@@ -372,13 +372,13 @@
       <WBS>2.7</WBS>
       <OutlineNumber>2.7</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-09T12:00:00</Start>
       <Finish>2026-11-10T08:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>400.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>
@@ -397,13 +397,13 @@
       <WBS>2.8</WBS>
       <OutlineNumber>2.8</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-10T08:00:00</Start>
       <Finish>2026-11-10T12:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>250.00</Cost>
       <ResourceNames>CCB</ResourceNames>
       <PredecessorLink>
@@ -428,13 +428,13 @@
       <WBS>3.1</WBS>
       <OutlineNumber>3.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-10T12:00:00</Start>
       <Finish>2026-11-12T12:00:00</Finish>
       <Duration>PT16H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT16H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>1137.50</Cost>
       <ResourceNames>Dev</ResourceNames>
       <PredecessorLink>
@@ -453,13 +453,13 @@
       <WBS>3.2</WBS>
       <OutlineNumber>3.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-12T12:00:00</Start>
       <Finish>2026-11-13T10:00:00</Finish>
       <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT6H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>337.50</Cost>
       <ResourceNames>QA</ResourceNames>
       <PredecessorLink>
@@ -478,13 +478,13 @@
       <WBS>3.3</WBS>
       <OutlineNumber>3.3</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-12T12:00:00</Start>
       <Finish>2026-11-13T14:00:00</Finish>
       <Duration>PT10H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT10H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>812.50</Cost>
       <ResourceNames>Dev</ResourceNames>
       <PredecessorLink>
@@ -503,13 +503,13 @@
       <WBS>3.4</WBS>
       <OutlineNumber>3.4</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-13T14:00:00</Start>
       <Finish>2026-11-16T12:00:00</Finish>
       <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT6H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>337.50</Cost>
       <ResourceNames>QA</ResourceNames>
       <PredecessorLink>
@@ -528,13 +528,13 @@
       <WBS>3.5</WBS>
       <OutlineNumber>3.5</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-13T14:00:00</Start>
       <Finish>2026-11-17T14:00:00</Finish>
       <Duration>PT16H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT16H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>1300.00</Cost>
       <ResourceNames>Dev</ResourceNames>
       <PredecessorLink>
@@ -553,13 +553,13 @@
       <WBS>3.6</WBS>
       <OutlineNumber>3.6</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-17T14:00:00</Start>
       <Finish>2026-11-18T14:00:00</Finish>
       <Duration>PT8H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT8H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>450.00</Cost>
       <ResourceNames>QA</ResourceNames>
       <PredecessorLink>
@@ -578,13 +578,13 @@
       <WBS>3.7</WBS>
       <OutlineNumber>3.7</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-17T14:00:00</Start>
       <Finish>2026-11-19T10:00:00</Finish>
       <Duration>PT12H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT12H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>975.00</Cost>
       <ResourceNames>Dev</ResourceNames>
       <PredecessorLink>
@@ -603,13 +603,13 @@
       <WBS>3.8</WBS>
       <OutlineNumber>3.8</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-19T10:00:00</Start>
       <Finish>2026-11-20T08:00:00</Finish>
       <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT6H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>337.50</Cost>
       <ResourceNames>QA</ResourceNames>
       <PredecessorLink>
@@ -628,13 +628,13 @@
       <WBS>3.9</WBS>
       <OutlineNumber>3.9</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-19T10:00:00</Start>
       <Finish>2026-11-23T12:00:00</Finish>
       <Duration>PT18H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT18H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>1462.50</Cost>
       <ResourceNames>Dev</ResourceNames>
       <PredecessorLink>
@@ -653,13 +653,13 @@
       <WBS>3.10</WBS>
       <OutlineNumber>3.10</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-23T12:00:00</Start>
       <Finish>2026-11-24T10:00:00</Finish>
       <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT6H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>337.50</Cost>
       <ResourceNames>QA</ResourceNames>
       <PredecessorLink>
@@ -678,13 +678,13 @@
       <WBS>3.11</WBS>
       <OutlineNumber>3.11</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-23T12:00:00</Start>
       <Finish>2026-11-24T14:00:00</Finish>
       <Duration>PT10H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT10H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>812.50</Cost>
       <ResourceNames>Dev</ResourceNames>
       <PredecessorLink>
@@ -703,13 +703,13 @@
       <WBS>3.12</WBS>
       <OutlineNumber>3.12</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-24T14:00:00</Start>
       <Finish>2026-11-25T10:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>400.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>
@@ -728,13 +728,13 @@
       <WBS>4.1</WBS>
       <OutlineNumber>4.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-13T14:00:00</Start>
       <Finish>2026-11-16T10:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>400.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>
@@ -753,13 +753,13 @@
       <WBS>4.2</WBS>
       <OutlineNumber>4.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-25T10:00:00</Start>
       <Finish>2026-11-25T14:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>400.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>
@@ -784,13 +784,13 @@
       <WBS>5.1</WBS>
       <OutlineNumber>5.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-25T14:00:00</Start>
       <Finish>2026-11-26T10:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>400.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>
@@ -809,13 +809,13 @@
       <WBS>5.2</WBS>
       <OutlineNumber>5.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-26T10:00:00</Start>
       <Finish>2026-11-26T14:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>300.00</Cost>
       <ResourceNames>BA</ResourceNames>
       <PredecessorLink>
@@ -834,13 +834,13 @@
       <WBS>5.3</WBS>
       <OutlineNumber>5.3</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Summary>0</Summary>
-      <Milestone>0</Milestone>
       <Start>2026-11-26T10:00:00</Start>
       <Finish>2026-11-26T14:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
       <Cost>400.00</Cost>
       <ResourceNames>PM</ResourceNames>
       <PredecessorLink>

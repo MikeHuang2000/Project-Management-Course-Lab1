@@ -125,7 +125,7 @@
 | 命令 | 参数（必填 / 可选） | stdout JSON 要点 | 可能退出码 |
 |---|---|---|---|
 | `init-db` | 无 | `{"created":true,"db_path":..}` | 0, 2 |
-| `seed` | `--reset`（可选，清空后重建） | `{"users":8,"devices":20,"requests":N,"loans":M}` | 0, 2 |
+| `seed` | `--reset`（可选，清空后重建） | `{"users":8,"devices":20,"requests":N,"loans":M}` | 0, 1（已初始化）, 2 |
 | `login` | `--username`、`--password`（必填） | `{"user_id":..,"username":..,"role":..}`，并写会话文件 | 0, 1, 2 |
 | `device list` | `--category`、`--status`（可选） | `{"items":[{"id","code","name","category","status"}]}` | 0, 2, 3 |
 | `device search` | `--name`、`--category`、`--from`、`--to`（至少给 1 个；`--from/--to` 必须成对） | `{"items":[{"id","code","name","category","available","conflicts":N}]}` | 0, 2, 3 |

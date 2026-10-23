@@ -342,12 +342,12 @@ def cmd_xml(a):
         ET.SubElement(s, "WBS").text = ph
         ET.SubElement(s, "OutlineNumber").text = ph
         ET.SubElement(s, "OutlineLevel").text = "1"
-        ET.SubElement(s, "Summary").text = "1"
-        ET.SubElement(s, "Milestone").text = "0"
         ET.SubElement(s, "Start").text = start.isoformat() + "T08:00:00"
         ET.SubElement(s, "Finish").text = start.isoformat() + "T17:00:00"
         ET.SubElement(s, "Duration").text = dur_str(max(k["ef"] for k in kids) - min(k["es"] for k in kids))
         ET.SubElement(s, "DurationFormat").text = "7"
+        ET.SubElement(s, "Milestone").text = "0"
+        ET.SubElement(s, "Summary").text = "1"
         uid_of["phase:" + ph] = uid
         uid += 1
 
@@ -362,13 +362,13 @@ def cmd_xml(a):
         ET.SubElement(e, "WBS").text = tid
         ET.SubElement(e, "OutlineNumber").text = tid
         ET.SubElement(e, "OutlineLevel").text = "2"
-        ET.SubElement(e, "Summary").text = "0"
-        ET.SubElement(e, "Milestone").text = "1" if t["milestone"] else "0"
         ET.SubElement(e, "Start").text = fmt_date(start, t["es"]).replace(" ", "T") + ":00"
         ET.SubElement(e, "Finish").text = fmt_date(start, t["ef"]).replace(" ", "T") + ":00"
         ET.SubElement(e, "Duration").text = dur_str(t["duration"])
         ET.SubElement(e, "DurationFormat").text = "7"
         ET.SubElement(e, "Work").text = dur_str(t["duration"])
+        ET.SubElement(e, "Milestone").text = "1" if t["milestone"] else "0"
+        ET.SubElement(e, "Summary").text = "0"
         ET.SubElement(e, "Cost").text = "%.2f" % t["budget"]
         ET.SubElement(e, "ResourceNames").text = t["resource"]
         for p in t["preds"]:
@@ -397,53 +397,155 @@ def cmd_xml(a):
     print("XML=%s tasks=%d" % (a.out, len(order)))
 
 
-def cmd_evm(a):
-    tasks, order = load_tasks(a.tasks)
-    load_rates(a.rates)
-    for t in tasks.values():
-        t["budget"] = round(t["person_days"] * RATES[t["resource"]], 2)
-    _, finish = cpm(tasks, order)
-    dd = float(a.date)
+def load_progress(path):
+    out = {}
+    if path and os.path.exists(path):
+        with open(path, encoding="utf-8-sig") as f:
+            for row in csv.DictReader(f):
+                out[row["id"].strip()] = float(row.get("pct") or 0) / 100.0
+    return out
 
+
+def load_actuals(path):
+    out = {}
+    if path and os.path.exists(path):
+        with open(path, encoding="utf-8-sig") as f:
+            for row in csv.DictReader(f):
+                out[row["id"].strip()] = float(row.get("actual_days") or 0)
+    return out
+
+
+def load_adjust(path):
+    rows = []
+    if path and os.path.exists(path):
+        with open(path, encoding="utf-8-sig") as f:
+            for row in csv.DictReader(f):
+                rows.append((row["role"].strip(), float(row["days"])))
+    return rows
+
+
+def evm_numbers(tasks, dd, progress, actuals, adjust):
     pv = 0.0
     for t in tasks.values():
         lo, hi = t["es"], t["ef"]
         frac = max(0.0, min(dd, hi) - lo) / (hi - lo) if hi > lo else (1.0 if dd >= hi else 0.0)
         pv += t["budget"] * max(0.0, min(frac, 1.0))
-
-    progress = {}
-    if a.progress and os.path.exists(a.progress):
-        with open(a.progress, encoding="utf-8-sig") as f:
-            for row in csv.DictReader(f):
-                progress[row["id"].strip()] = float(row.get("pct") or 0) / 100.0
     ev = sum(t["budget"] * progress.get(tid, 0.0) for tid, t in tasks.items())
-
-    actuals = {}
-    if a.actuals and os.path.exists(a.actuals):
-        with open(a.actuals, encoding="utf-8-sig") as f:
-            for row in csv.DictReader(f):
-                actuals[row["id"].strip()] = float(row.get("actual_days") or 0)
     ac = sum(actuals.get(tid, 0.0) * RATES[t["resource"]] for tid, t in tasks.items())
-
+    ac += sum(days * RATES[role] for role, days in adjust)
     bac = sum(t["budget"] for t in tasks.values())
-    cv, sv = ev - ac, ev - pv
     cpi = ev / ac if ac else 0.0
     spi = ev / pv if pv else 0.0
-    eac = bac / cpi if cpi else 0.0
-    out = {
-        "data_date": dd, "planned_finish": round(finish, 2), "BAC": round(bac, 2),
-        "PV": round(pv, 2), "EV": round(ev, 2), "AC": round(ac, 2),
-        "CV": round(cv, 2), "SV": round(sv, 2),
-        "CPI": round(cpi, 3), "SPI": round(spi, 3),
-        "EAC": round(eac, 2), "VAC": round(bac - eac, 2),
+    return {
+        "data_date": round(dd, 2), "BAC": round(bac, 2), "PV": round(pv, 2),
+        "EV": round(ev, 2), "AC": round(ac, 2), "CV": round(ev - ac, 2),
+        "SV": round(ev - pv, 2), "CPI": round(cpi, 3), "SPI": round(spi, 3),
+        "EAC": round(bac / cpi, 2) if cpi else 0.0,
+        "VAC": round(bac - bac / cpi, 2) if cpi else 0.0,
     }
+
+
+def cmd_evm(a):
+    tasks, order = load_tasks(a.tasks)
+    load_rates(a.rates)
+    for t in tasks.values():
+        t["budget"] = round(t["person_days"] * RATES[t["resource"]], 2)
+    cpm(tasks, order)
+    out = evm_numbers(tasks, float(a.date), load_progress(a.progress),
+                      load_actuals(a.actuals), load_adjust(a.adjust))
     print(json.dumps(out, ensure_ascii=False, indent=2))
+
+
+def cmd_status(a):
+    tasks, order = load_tasks(a.tasks)
+    load_rates(a.rates)
+    for t in tasks.values():
+        t["budget"] = round(t["person_days"] * RATES[t["resource"]], 2)
+    cpm(tasks, order)
+    progress = load_progress(a.progress)
+    actuals = load_actuals(a.actuals)
+
+    print("| WBS | 任务 | 负责 | 计划人日 | 实际人日 | 偏差 | 状态 | 预算 |")
+    print("|---|---|---|---|---|---|---|---|")
+    for tid in order:
+        t = tasks[tid]
+        pct = progress.get(tid, 0.0)
+        act = actuals.get(tid)
+        dev = "" if act is None else "%+.2f" % (act - t["person_days"])
+        state = "完成" if pct >= 1 else ("进行中" if pct > 0 else "未开始")
+        print("| %s | %s | %s | %.2f | %s | %s | %s | %.2f |" % (
+            tid, t["name"], t["resource"], t["person_days"],
+            "" if act is None else "%.2f" % act, dev, state, t["budget"]))
+    print()
+    done = sum(1 for tid in order if progress.get(tid, 0) >= 1)
+    spent = sum(actuals.get(tid, 0) * RATES[tasks[tid]["resource"]] for tid in order)
+    print("TASKS_DONE=%d/%d" % (done, len(order)))
+    print("ACTUAL_COST=%.2f" % spent)
+    for ph in ["1", "2", "3", "4", "5"]:
+        ids = [x for x in order if x.split(".")[0] == ph]
+        print("PHASE %s: %d/%d done" % (ph, sum(1 for x in ids if progress.get(x, 0) >= 1), len(ids)))
+
+
+def cmd_track(a):
+    """Tracking Gantt: baseline bar (dashed outline) vs actual days (filled), plus data date."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Patch
+
+    tasks, order = load_tasks(a.tasks)
+    load_rates(a.rates)
+    for t in tasks.values():
+        t["budget"] = round(t["person_days"] * RATES[t["resource"]], 2)
+    _, finish = cpm(tasks, order)
+    progress = load_progress(a.progress)
+    actuals = load_actuals(a.actuals)
+    adjust = load_adjust(a.adjust)
+    done_ef = [t["ef"] for tid, t in tasks.items() if progress.get(tid, 0) >= 1.0]
+    dd = float(a.date) if a.date not in (None, "", "0") else (max(done_ef) if done_ef else 0.0)
+    evm = evm_numbers(tasks, dd, progress, actuals, adjust)
+
+    plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DejaVu Sans"]
+    plt.rcParams["axes.unicode_minus"] = False
+    fig, ax = plt.subplots(figsize=(11, 9))
+    labels = []
+    for i, tid in enumerate(order):
+        t = tasks[tid]
+        pct = progress.get(tid, 0.0)
+        ax.barh(i, t["duration"], left=t["es"], height=0.64, facecolor="none",
+                edgecolor="#9aa5ad", linestyle="--", linewidth=0.8)
+        act = actuals.get(tid)
+        if act is not None:
+            color = "#2e8b57" if pct >= 1.0 else ("#d68910" if pct > 0 else "#5b8db8")
+            ax.barh(i, act, left=t["es"], height=0.40, color=color, alpha=0.95)
+            if abs(act - t["duration"]) > 1e-9:
+                ax.text(t["es"] + max(act, t["duration"]) + 0.12, i, "%+.2f" % (act - t["duration"]),
+                        va="center", fontsize=6.5, color="#c0392b")
+        labels.append("%s %s" % (tid, t["name"]))
+    ax.axvline(dd, color="#c0392b", linestyle="-.", linewidth=1.2)
+    ax.text(dd + 0.08, -0.9, "数据日期 %.2f" % dd, color="#c0392b", fontsize=8, va="top")
+    ax.set_yticks(range(len(order)))
+    ax.set_yticklabels(labels, fontsize=8)
+    ax.set_ylim(len(order) - 0.4, -1.4)
+    ax.set_xlim(0, finish + 1.2)
+    ax.set_xlabel("工作日（自项目开始）", fontsize=9)
+    ax.set_title("追踪甘特图：计划 %.2f 天 / 数据日期 %.2f 天，CPI %.2f，SPI %.2f"
+                 % (finish, dd, evm["CPI"], evm["SPI"]), fontsize=10.5)
+    ax.grid(axis="x", linestyle=":", alpha=0.5)
+    ax.legend(handles=[Patch(facecolor="none", edgecolor="#9aa5ad", linestyle="--", label="计划工期"),
+                       Patch(color="#2e8b57", label="已完成"),
+                       Patch(color="#d68910", label="进行中")],
+              loc="lower right", fontsize=8)
+    fig.tight_layout()
+    fig.savefig(a.out, dpi=160)
+    print(json.dumps(evm, ensure_ascii=False, indent=2))
+    print("TRACK=%s" % a.out)
 
 
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["schedule", "check", "gantt", "network", "xml", "evm"])
+    ap.add_argument("cmd", choices=["schedule", "check", "gantt", "network", "xml", "evm", "track", "status"])
     ap.add_argument("--tasks", default="plan/tasks.csv")
     ap.add_argument("--rates", default="plan/rates.csv")
     ap.add_argument("--out", default=None)
@@ -451,12 +553,15 @@ def main():
     ap.add_argument("--date", default="0")
     ap.add_argument("--progress", default="plan/progress.csv")
     ap.add_argument("--actuals", default="plan/actuals.csv")
+    ap.add_argument("--adjust", default="plan/adjust.csv")
     a = ap.parse_args()
     if a.out is None:
-        a.out = {"xml": "wbs/wbs.xml", "network": "plan/network.png"}.get(a.cmd, "plan/gantt.png")
+        a.out = {"xml": "wbs/wbs.xml", "network": "plan/network.png",
+                 "track": "plan/track.png"}.get(a.cmd, "plan/gantt.png")
     load_rates(a.rates)
     {"schedule": cmd_schedule, "check": cmd_check, "gantt": cmd_gantt,
-     "network": cmd_network, "xml": cmd_xml, "evm": cmd_evm}[a.cmd](a)
+     "network": cmd_network, "xml": cmd_xml, "evm": cmd_evm, "track": cmd_track,
+     "status": cmd_status}[a.cmd](a)
 
 
 if __name__ == "__main__":
