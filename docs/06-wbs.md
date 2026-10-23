@@ -8,7 +8,7 @@
 | 状态 | 待评审（随 `02-charter.md` §9.1 条件 3 一并确认） |
 | 上游依据 | `plan/tasks.csv`（唯一任务清单）、`docs/04-scope.md` §2/§6、`docs/05-architecture.md` |
 
-WBS 编号与 `plan/tasks.csv` 的 `id` **一一对应**（30 个任务，无增删、无改号）；本文件是便于人读的说明与词典，导入 MS Project 的 XML 在 `wbs/wbs.xml`（由 PM 生成）。下表工期、前置关系均照抄 `plan/tasks.csv`，人日与预算见 `plan/tasks.csv` 与 `docs/08-cost.md`，本文不重复。
+WBS 编号与 `plan/tasks.csv` 的 `id` **一一对应**（30 个任务，无增删、无改号）；本文件是便于人读的说明与词典，导入 MS Project 的 XML 在 `wbs/wbs.xml`（由 PM 生成）。下表工期、前置关系均照抄 `plan/tasks.csv`，人日与预算见 `plan/tasks.csv` 与 `docs/08-cost.md`，本文不重复。5 个开发工作包的可执行卡片（做什么/不做什么/验收/退出标准）见 `docs/10-work-packages.md`，派单时以那份为准。
 
 ## 1 WBS 树（按阶段分组，30 行）
 

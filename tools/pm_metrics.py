@@ -206,6 +206,98 @@ def cmd_gantt(a):
     print("GANTT=%s" % a.out)
 
 
+def cmd_network(a):
+    """PDM (activity-on-node) network: layered by dependency depth."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import FancyArrowPatch, Rectangle
+
+    tasks, order = load_tasks(a.tasks)
+    load_rates(a.rates)
+    for t in tasks.values():
+        t["budget"] = round(t["person_days"] * RATES[t["resource"]], 2)
+    topo, finish = cpm(tasks, order)
+
+    depth = {}
+    for tid in topo:
+        preds = tasks[tid]["preds"]
+        depth[tid] = 0 if not preds else max(depth[p] for p in preds) + 1
+
+    # vertical layout: y = dependency depth, x = lane (critical path in the middle)
+    W, H, XPITCH, YPITCH = 3.0, 0.90, 3.2, 1.12
+    pos = {}
+    for tid in order:
+        if tasks[tid]["critical"]:
+            lane = 0
+        elif tasks[tid]["resource"] == "QA":
+            lane = 1
+        else:
+            lane = -1
+        pos[tid] = [lane * XPITCH, -depth[tid] * YPITCH]
+
+    # spread nodes that share a lane and a depth (e.g. 5.2 and 5.3 are both critical)
+    groups = defaultdict(list)
+    for tid in order:
+        groups[(round(pos[tid][0], 2), round(pos[tid][1], 2))].append(tid)
+    for ids in groups.values():
+        if len(ids) > 1:
+            step = 1.1
+            for i, tid in enumerate(ids):
+                pos[tid][0] += (i - (len(ids) - 1) / 2) * (W / 2 + 0.25) * 2
+
+    plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DejaVu Sans"]
+    plt.rcParams["axes.unicode_minus"] = False
+    rows = max(depth.values()) + 1
+    fig, ax = plt.subplots(figsize=(7.2, rows * 0.43))
+
+    for tid in order:
+        t = tasks[tid]
+        x, y = pos[tid]
+        edge = "#c0392b" if t["critical"] else "#5b8db8"
+        ax.add_patch(Rectangle((x - W / 2, y - H / 2), W, H, facecolor="white",
+                               edgecolor=edge, linewidth=1.7 if t["critical"] else 0.9,
+                               zorder=3))
+        label = t["name"]
+        if len(label) > 12:
+            cut = label[:12]
+            ax.text(x, y + 0.26, "%s %s" % (tid, cut), ha="center", va="center",
+                    fontsize=6.0, zorder=4)
+            ax.text(x, y + 0.05, label[12:24], ha="center", va="center",
+                    fontsize=6.0, zorder=4)
+            ty = -0.28
+        else:
+            ax.text(x, y + 0.16, "%s %s" % (tid, label), ha="center", va="center",
+                    fontsize=6.0, zorder=4)
+            ty = -0.22
+        ax.text(x, y + ty, "%.2fd  ES %.2f  TF %.2f" % (t["duration"], t["es"], t["float"]),
+                ha="center", va="center", fontsize=5.6,
+                color="#c0392b" if t["critical"] else "#555", zorder=4)
+
+    for tid in order:
+        for p in tasks[tid]["preds"]:
+            x1, y1 = pos[p]
+            x2, y2 = pos[tid]
+            both = tasks[p]["critical"] and tasks[tid]["critical"]
+            ax.add_patch(FancyArrowPatch((x1, y1 - H / 2), (x2, y2 + H / 2),
+                                         arrowstyle="-|>", mutation_scale=8,
+                                         linewidth=1.4 if both else 0.8,
+                                         color="#c0392b" if both else "#9bb4c9",
+                                         connectionstyle="arc3,rad=%.2f" % (0.12 if x1 != x2 else 0),
+                                         shrinkA=1, shrinkB=1, zorder=2))
+    ax.set_xlim(-XPITCH - W / 2 - 0.3, XPITCH + W / 2 + 0.3)
+    ax.set_ylim(-rows * YPITCH + 0.4, 0.9)
+    ax.axis("off")
+    ax.text(0, 0.55, "DeviceLoan MVP 前导图（PDM/AON）：红线为关键路径，共 %.2f 个工作日" % finish,
+            ha="center", va="center", fontsize=9.5)
+    ax.text(-XPITCH, 0.15, "旁支（PM/BA/CCB）", ha="center", fontsize=7, color="#5b8db8")
+    ax.text(0, 0.15, "关键路径", ha="center", fontsize=7, color="#c0392b")
+    ax.text(XPITCH, 0.15, "QA 验证", ha="center", fontsize=7, color="#5b8db8")
+    fig.tight_layout()
+    fig.savefig(a.out, dpi=170)
+    print("NETWORK=%s" % a.out)
+
+
 def cmd_xml(a):
     import xml.etree.ElementTree as ET
 
@@ -351,7 +443,7 @@ def cmd_evm(a):
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["schedule", "check", "gantt", "xml", "evm"])
+    ap.add_argument("cmd", choices=["schedule", "check", "gantt", "network", "xml", "evm"])
     ap.add_argument("--tasks", default="plan/tasks.csv")
     ap.add_argument("--rates", default="plan/rates.csv")
     ap.add_argument("--out", default=None)
@@ -361,10 +453,10 @@ def main():
     ap.add_argument("--actuals", default="plan/actuals.csv")
     a = ap.parse_args()
     if a.out is None:
-        a.out = "wbs/wbs.xml" if a.cmd == "xml" else "plan/gantt.png"
+        a.out = {"xml": "wbs/wbs.xml", "network": "plan/network.png"}.get(a.cmd, "plan/gantt.png")
     load_rates(a.rates)
     {"schedule": cmd_schedule, "check": cmd_check, "gantt": cmd_gantt,
-     "xml": cmd_xml, "evm": cmd_evm}[a.cmd](a)
+     "network": cmd_network, "xml": cmd_xml, "evm": cmd_evm}[a.cmd](a)
 
 
 if __name__ == "__main__":
