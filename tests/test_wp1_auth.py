@@ -22,7 +22,9 @@ MAIN = os.path.join(SRC, "main.py")
 SEED_PASSWORD = "Passw0rd!"
 TABLES = {"users", "devices", "requests", "loans", "audit_log"}
 # src/ 内部模块（架构 §1 文件布局），不属于第三方依赖
-LOCAL_MODULES = {"main", "db", "auth", "audit", "devices", "requests", "loans", "stats"}
+LOCAL_MODULES = {
+    "main", "db", "auth", "audit", "devices", "requests", "loans", "stats", "waitlist",
+}
 
 
 class WP1CliTest(unittest.TestCase):

@@ -11,6 +11,21 @@ python src/main.py login --username admin --password Passw0rd! --db data/devicel
 python src/main.py device list --db data/deviceloan.db
 ```
 
+候补队列（CR-02 二期）：
+
+```powershell
+# 学生登记候补
+python src/main.py login --username student1 --password Passw0rd! --db data/deviceloan.db
+python src/main.py waitlist join --device DEV-001 --from 2026-11-03T08:00:00Z --to 2026-11-03T12:00:00Z --note 课程实验 --db data/deviceloan.db
+python src/main.py waitlist list --db data/deviceloan.db
+
+# 管理员查看全部候补
+python src/main.py login --username admin --password Passw0rd! --db data/deviceloan.db
+python src/main.py waitlist list --all --db data/deviceloan.db
+```
+
+候补只做“登记 + 名单”，不做通知、自动递补、取消候补；候补记录不占用时段，不影响 `request approve` 的冲突判定。
+
 一键生成演示数据（含一次完整的申请—批准—借出—归还）：
 
 ```powershell
@@ -34,16 +49,17 @@ python -m unittest discover -s tests
 
 | 路径 | 内容 |
 |---|---|
-| `src/` | 实现（`db` / `auth` / `audit` / `devices` / `requests` / `loans` / `stats` / `main`） |
-| `tests/` | 76 条自动化测试 |
+| `src/` | 实现（`db` / `auth` / `audit` / `devices` / `requests` / `waitlist` / `loans` / `stats` / `main`） |
+| `tests/` | 84 条自动化测试（一期 76 + 二期候补 8） |
 | `scripts/demo.py` | 演示数据脚本 |
 | `docs/` | 过程文档（商业论证、章程、范围、架构、WBS、进度、成本、风险质量、工作包） |
 | `docs/evidence/` | 各阶段收口记录、验收证据、变更与追认记录 |
 | `plan/` | 计划与台账（任务、人日、完成度、EVM、甘特图） |
-| `wbs/wbs.xml` | 可导入 MS Project 的 WBS |
+| `wbs/wbs.xml` | 30 任务详细 WBS（结构归档） |
+| `wbs/wbs-msp.xml` | 整日版 WBS（MS Project 截图用，19.75 天） |
 
 ## 已知限制
 
-- 候补队列（CRQ-10）按 CCB 裁定延后至二期，本期未实现。
+- 候补队列（CRQ-10）已按 CR-02 在二期交付：仅“登记 + 名单”，不含通知、自动递补、取消候补；一期 16 条基线与 EVM 不变。
 - 逾期天数按自然日向上取整，最小记 1 天。
 - 未登录时，参数错误优先于身份校验返回 2，其余返回 3。

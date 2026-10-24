@@ -2,10 +2,10 @@
 
 | 项目 | 内容 |
 |---|---|
-| 文档编号 / 版本 | 05-architecture v1.0 |
+| 文档编号 / 版本 | 05-architecture v1.1 |
 | 编制 | BA（DeepSeek V4.1 Flash Free） |
-| 日期 | 2026-10-23 |
-| 状态 | 待评审；一经 PM 批准即为 Dev 实现与 QA 测试的契约 |
+| 日期 | 2026-10-24 |
+| 状态 | v1.0 一期已实现；v1.1 为 CR-02 二期候补增量 |
 | 上游依据 | `04-scope.md`、`00-customer-brief.md`、`02-charter.md` §7 |
 
 技术基线：Python 3.11、标准库 + SQLite（`sqlite3`、`argparse`、`hashlib`、`json`、`datetime`）、命令行运行、零第三方依赖（NFR-01）。
@@ -19,6 +19,7 @@
 | `src/auth.py` | PBKDF2 口令哈希与校验、登录、会话文件读写、角色校验装饰器 | 不做审批 | WP1 |
 | `src/devices.py` | 设备列表、按名称/类别检索、按时段判定可借 | 不写 `requests` 状态 | WP2 |
 | `src/requests.py` | 提交、取消、列表、详情、批准、拒绝、**冲突判定** | 不改 `loans` | WP3 |
+| `src/waitlist.py` | 候补登记、去重、名单查询；候补**不参与**冲突占位 | 不改 `requests` 审批逻辑 | WP6（二期） |
 | `src/loans.py` | 借出、归还、逾期判定与逾期查询数据源 | 不改审批状态 | WP4 |
 | `src/stats.py` | 借用次数、逾期率、设备利用率（口径见 §6） | 不写库 | WP5 |
 | `src/audit.py` | 写审计记录、查询审计记录 | 不改业务数据 | WP5（表与写入在 WP1 即建立） |
@@ -103,12 +104,24 @@
 | actor_id | INTEGER | 可空 REFERENCES users(id) | 系统事件或登录失败时可空 |
 | actor_name | TEXT | NOT NULL | 冗余登录名，便于追溯 |
 | action | TEXT | NOT NULL | 事件类型，见 §7 |
-| target_type | TEXT | 可空 | `user / device / request / loan` |
+| target_type | TEXT | 可空 | `user / device / request / loan / waitlist` |
 | target_id | INTEGER | 可空 | |
 | detail | TEXT | 可空 | JSON 字符串，如拒绝原因、冲突对象 id |
 | result | TEXT | NOT NULL CHECK IN ('ok','denied','error') | |
 
-**不建 waitlist 表**：CRQ-10 不在基线（`04-scope.md` §6）。
+**waitlists（CR-02 二期增量）**
+
+| 列 | 类型 | 约束 | 说明 |
+|---|---|---|---|
+| id | INTEGER | PK | |
+| device_id | INTEGER | NOT NULL REFERENCES devices(id) | |
+| user_id | INTEGER | NOT NULL REFERENCES users(id) | |
+| start_at / end_at | TEXT | NOT NULL | ISO 8601 UTC，半开区间 |
+| status | TEXT | NOT NULL CHECK IN ('waiting','cancelled') DEFAULT 'waiting' | 本期只写 `waiting`，不提供取消命令 |
+| note | TEXT | 可空 | 应用层限 200 字符 |
+| created_at | TEXT | NOT NULL | |
+
+索引：`(device_id, start_at, end_at)`、`(user_id)`。候补**不进入**冲突占位；`requests` 的 approve 判定不变。
 
 ## 3 冲突规则（CRQ-05 唯一判定口径）
 
@@ -140,6 +153,8 @@
 | `request show` | `--request-id`（必填） | 单条完整字段 + `loan` 摘要（可空） | 0, 1, 2, 3 |
 | `request approve` | `--request-id`（必填） | `{"request_id":..,"status":"approved","decided_at":..}` | 0, 1, 2, 3, 4 |
 | `request reject` | `--request-id`、`--reason`（必填） | `{"request_id":..,"status":"rejected","reject_reason":..}` | 0, 1, 2, 3 |
+| `waitlist join` | `--device`、`--from`、`--to`（必填）、`--note`（可选） | `{"waitlist_id":..,"status":"waiting","available_now":bool}` | 0, 1, 2, 3 |
+| `waitlist list` | `--all`（仅 admin）、`--device`、`--status`（可选） | `{"items":[{"waitlist_id","device_id","user_id","start_at","end_at","status","created_at"}]}` | 0, 2, 3 |
 | `loan checkout` | `--request-id`（必填） | `{"loan_id":..,"request_id":..,"due_at":..}` | 0, 1, 2, 3 |
 | `loan return` | `--loan-id`（必填） | `{"loan_id":..,"returned_at":..,"overdue":bool,"days_late":N}` | 0, 1, 2, 3 |
 | `stats usage` | `--from`、`--to`（必填） | `{"range":{..},"overdue_rate":x,"devices":[{"device_id","borrow_count","utilization","overbooked"}]}` | 0, 1, 2, 3 |
@@ -161,6 +176,8 @@
 | `request cancel` | ✓ 仅本人且 `pending`，否则 1 | ✗ 3 | ✗ 3 |
 | `request list` / `request show` | ✓ 仅本人（他人 → 1） | ✓ 全部 | ✗ 3 |
 | `request approve` / `request reject` | ✗ 3 | ✓ | ✗ 3 |
+| `waitlist join` | ✓（本人） | ✗ 3 | ✗ 3 |
+| `waitlist list` | ✓ 仅本人（`--all` → 3） | ✓（`--all` 全部；不带则为空） | ✗ 3 |
 | `loan checkout` / `loan return` | ✗ 3 | ✓ | ✗ 3 |
 | `stats usage` / `stats overdue` | ✗ 3 | ✓ | ✓（只读） |
 | `audit list` | ✗ 3 | ✓ | ✗ 3 |
@@ -193,11 +210,19 @@
 | `request_reject` | 拒绝成功 | request / id | reason |
 | `loan_checkout` | 借出登记成功 | loan / 新 id | request_id、due_at |
 | `loan_return` | 归还登记成功 | loan / id | returned_at、overdue |
+| `waitlist_join` | 候补登记成功（CR-02 二期附加项） | waitlist / 新 id | device_id、start_at、end_at |
 
 `request_cancel` 允许记录，但不在验收范围。审计写入与被审计的业务操作在同一事务内，业务失败时审计记录同样回滚（登录失败除外，单独提交）。
 
 ## 8 契约稳定性
 
 - Dev 不得修改命令名、参数名、退出码、JSON 字段名与表结构；实现与本文不一致时以本文为准并报 PM。
-- 需要变更（含新增命令、字段、CRQ-10 相关表）一律由 PM 提交 CCB；未批准前不得进入代码。
+- 需要变更（含新增命令、字段、CRQ-10 相关表）一律由 PM 提交 CCB；未批准前不得进入代码（CR-02 已批准，见 `docs/evidence/ccb-cr02.md`）。
 - 本文档版本随变更递增：v1.0 → v1.1 …；每次变更在文末留一行变更记录。
+
+## 9 变更记录
+
+| 版本 | 日期 | 变更 |
+|---|---|---|
+| v1.0 | 2026-10-23 | 一期契约：users/devices/requests/loans/audit_log 与 16 条命令 |
+| v1.1 | 2026-10-24 | CR-02 二期：新增 `waitlists` 表、`waitlist join/list`、`waitlist_join` 审计；一期审批与冲突逻辑不变 |

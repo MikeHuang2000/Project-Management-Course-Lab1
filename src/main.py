@@ -12,6 +12,7 @@ import devices
 import loans
 import requests
 import stats
+import waitlist
 
 SEED_PASSWORD = "Passw0rd!"
 
@@ -87,7 +88,7 @@ def cmd_seed(args):
         if count and not args.reset:
             raise CLIError(1, "already_seeded", "数据库已有数据，如需重建请使用 --reset")
         if args.reset:
-            for table in ("loans", "requests", "audit_log", "devices", "users"):
+            for table in ("loans", "waitlists", "requests", "audit_log", "devices", "users"):
                 conn.execute("DELETE FROM %s" % table)
         now = db.now_iso()
         for username, role, display_name in SEED_USERS:
@@ -238,6 +239,35 @@ def cmd_request_reject(args):
         return requests.reject(conn, user, args.request_id, reason)
     finally:
         conn.close()
+
+
+def cmd_waitlist_join(args):
+    start = devices.normalize_iso(args.from_)
+    end = devices.normalize_iso(args.to_)
+    if start is None or end is None:
+        raise CLIError(2, "bad_args", "时间格式非法，应为 ISO 8601")
+    if start >= end:
+        raise CLIError(2, "bad_args", "结束时间必须晚于开始时间")
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        return waitlist.join(conn, user, args.device, start, end, args.note)
+    finally:
+        conn.close()
+
+
+def cmd_waitlist_list(args):
+    conn = db.connect(args.db)
+    db.init_db(conn)
+    try:
+        user = require_session(conn)
+        items = waitlist.list_waitlists(
+            conn, user, show_all=args.all, device_ref=args.device, status=args.status
+        )
+    finally:
+        conn.close()
+    return {"items": items}
 
 
 def cmd_loan_checkout(args):
@@ -406,6 +436,25 @@ def build_parser():
     r.add_argument("--reason", required=True)
     r.set_defaults(handler=cmd_request_reject)
 
+    p = sub.add_parser("waitlist", help="候补队列")
+    p.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    wsub = p.add_subparsers(dest="waitlist_command", required=True)
+
+    w = wsub.add_parser("join", help="登记候补")
+    w.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    w.add_argument("--device", required=True)
+    w.add_argument("--from", dest="from_", required=True)
+    w.add_argument("--to", dest="to_", required=True)
+    w.add_argument("--note")
+    w.set_defaults(handler=cmd_waitlist_join)
+
+    w = wsub.add_parser("list", help="候补名单")
+    w.add_argument("--db", dest="db", default=argparse.SUPPRESS)
+    w.add_argument("--all", action="store_true", help="查看全部（仅管理员）")
+    w.add_argument("--device")
+    w.add_argument("--status", choices=("waiting", "cancelled"))
+    w.set_defaults(handler=cmd_waitlist_list)
+
     p = sub.add_parser("loan", help="借出与归还")
     p.add_argument("--db", dest="db", default=argparse.SUPPRESS)
     lsub = p.add_subparsers(dest="loan_command", required=True)
@@ -468,6 +517,9 @@ def main(argv=None):
         fail(exc.code, exc.error, exc.message)
         return exc.code
     except loans.LoanError as exc:
+        fail(exc.code, exc.error, exc.message)
+        return exc.code
+    except waitlist.WaitlistError as exc:
         fail(exc.code, exc.error, exc.message)
         return exc.code
     except sqlite3.Error as exc:

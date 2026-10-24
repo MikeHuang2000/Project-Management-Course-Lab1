@@ -86,7 +86,7 @@ EXIT=0
 | NFR-06 | 关键操作写审计日志（六类） | `test_tc_nfr_06_01_audit_filters` + WP1–WP4 各包审计断言；手工按 `--action` 逐类检索 | 六类事件 `login / request_submit / request_approve / request_reject / loan_checkout / loan_return` 全部可查、`result:ok`、`target_type` 正确；失败登录记 `result:denied` | PASS |
 | NFR-07 | 时间统一 ISO 8601、同一时区 | 无同名 TC 用例；由 `test_wp1_auth.py:125` 的正则断言 + 各用例内 ISO 字面量间接覆盖；手工核对全部输出 | 所有输出的时间字段均为 `YYYY-MM-DDTHH:MM:SSZ` 秒级 UTC；带 `+08:00` 偏移的输入被折算为 UTC（`--from 2026-12-10T16:00:00+08:00` 与 `T08:00:00Z` 结果一致） | PASS（覆盖方式为间接断言，见 §5.2 遗留 R-UAT-03） |
 
-RTM 17 行中第 17 行 CRQ-10（候补队列）为变更候选，CCB 裁定"有条件批准、延后实施"（`docs/evidence/ccb-cr01.md`），不在本次验收范围，**判 N/A（延后至二期）**，与 `04-scope.md` §2/§6 一致。
+RTM 17 行中第 17 行 CRQ-10（候补队列）为变更候选，CCB 裁定"有条件批准、延后实施"（`docs/evidence/ccb-cr01.md`），不在本次验收范围，**判 N/A（延后至二期）**；二期 CR-02 补记见 §8。
 
 ## 4 成功标准逐条结论（`00-customer-brief.md` §5）
 
@@ -198,3 +198,16 @@ RTM 17 行中第 17 行 CRQ-10（候补队列）为变更候选，CCB 裁定"有
 | 9 | `Get-ChildItem data` 前后对比 | 两个文件 mtime 与大小不变（NFR-05） |
 
 未执行项（如需补证）：真实网络环境、超过演示规模的数据量、并发多用户——均超出 MVP 验收范围（`04-scope.md` §2/§5）。
+
+## 8 二期 CR-02 增量验收（补记，2026-10-24）
+
+一期 16 条验收结论与 73 条记录保持冻结；本节只记二期候补队列。
+
+| AC | 判定 | 结果 |
+|---|---|---|
+| AC1 登记成功 | 退出码 0、1 条 `waiting`、审计 `waitlist_join` | PASS |
+| AC2 重复登记 | 同人同设备重叠 → 1；首尾相接 → 0；他人同时段允许 | PASS |
+| AC3 候补不占位 | 有/无 `waiting` 的 approve 结果一致；原冲突仍返回 4 | PASS |
+| AC4 可见性 | student 本人、admin `--all`、director 退出码 3 | PASS |
+
+证据：`docs/evidence/qa-wp6.md`（8 条用例）；全量 `python -m unittest discover -s tests` = **84 条通过**。契约：`docs/05-architecture.md` v1.1；裁定：`docs/evidence/ccb-cr02.md`。二期 2.5 人日 / ¥1,475 单列，不改一期 EVM。

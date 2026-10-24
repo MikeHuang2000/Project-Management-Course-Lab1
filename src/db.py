@@ -43,6 +43,20 @@ CREATE TABLE IF NOT EXISTS requests (
     created_at TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS waitlists (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    device_id INTEGER NOT NULL REFERENCES devices(id),
+    user_id INTEGER NOT NULL REFERENCES users(id),
+    start_at TEXT NOT NULL,
+    end_at TEXT NOT NULL,
+    status TEXT NOT NULL CHECK (status IN ('waiting','cancelled')) DEFAULT 'waiting',
+    note TEXT,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_waitlists_device ON waitlists(device_id, start_at, end_at);
+CREATE INDEX IF NOT EXISTS idx_waitlists_user ON waitlists(user_id);
+
 CREATE TABLE IF NOT EXISTS loans (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     request_id INTEGER NOT NULL UNIQUE REFERENCES requests(id),

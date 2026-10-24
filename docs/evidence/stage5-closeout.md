@@ -56,7 +56,7 @@
 | 规划 | 范围与 RTM、架构契约、WBS、进度、成本、风险质量、工作包 | `docs/04-scope.md` ~ `docs/10-work-packages.md` |
 | 执行 | 4 个开发包、5 个 QA 包、演示脚本、集成 | `src/`、`tests/`、`scripts/` |
 | 监控 | 台账、EVM、追踪甘特图、状态报告 | `plan/`、`docs/evidence/stage3-log.md`、`stage4-monitor.md` |
-| 变更 | CR-01 影响分析、CCB 裁定、收尾追认 | `docs/evidence/cr01-impact.md`、`ccb-cr01.md`、`ccb-closeout.md` |
+| 变更 | CR-01 影响分析、CCB 裁定、收尾追认；CR-02 二期裁定与 QA | `docs/evidence/cr01-impact.md`、`ccb-cr01.md`、`ccb-closeout.md`、`ccb-cr02.md`、`qa-wp6.md` |
 | 收尾 | QA 各包证据、UAT、本记录 | `docs/evidence/qa-wp*.md`、`uat.md`、本文件 |
 | 计划工具 | CPM/CCPM/EVM/甘特/网络图/XML 生成脚本 | `tools/pm_metrics.py`、`tools/session_stats.py` |
 | 可导入 MS Project | WBS 与工期 | `wbs/wbs.xml`（详细 30 任务）、`wbs/wbs-msp.xml`（整日版 20 任务，截图用） |
@@ -77,11 +77,26 @@
 4.2 与 5.3 是范围置换后分别并入 4.1、5.2 的任务：基线保留 0.5 天计划，
 实际工时记 0，因此追踪甘特图以“并入前序”标记显示，而非漏画。
 
+## 5A. 二期 CR-02 增量（2026-10-24）
+
+一期验收后客户坚持交付 CR-01 候补队列，CCB 另开 CR-02，按“二期增量”实施：只做登记与名单，不做通知、自动递补、取消候补；2.5 人日 / ¥1,475 单列。
+
+| 项 | 结果 |
+|---|---|
+| 范围 | CRQ-10 登记 + 名单（`waitlist join/list`） |
+| 代码 | `src/waitlist.py`、`db.py`（waitlists 表）、`main.py`（命令组） |
+| 测试 | 84 条全绿（一期 76 + 候补 8） |
+| 验收 | AC1–AC4 PASS（`qa-wp6.md`） |
+| 一期基线 / EVM | 不变：EV 15,800、AC 17,974.90、CPI 0.879、SPI 1.000、16/16 |
+| 二期成本 | 2.5 人日 / ¥1,475，不占一期储备，不计入一期 CPI/SPI |
+
+证据：`ccb-cr02.md`、`qa-wp6.md`；契约见 `05-architecture.md` v1.1，RTM 见 `04-scope.md` §6。
+
 ## 6. 移交与遗留
 
 | 项 | 去向 |
 |---|---|
-| 候补队列 CRQ-10 | 二期首批（估算 2.5 人日 / ¥1,475，`cr01-impact.md`） |
+| 候补队列 CRQ-10 | 已由 CR-02 二期交付（登记 + 名单）；通知、自动递补转后续 |
 | R-UAT-01 登录失败不清会话 | 契约未规定，转二期评估；README 已说明单会话 |
 | R-UAT-06 按资产编号检索 | 二期增强 |
 | 财务参数未获书面确认 | 运维期 6/12 个月复核，低于假设 75% 时重算 |
