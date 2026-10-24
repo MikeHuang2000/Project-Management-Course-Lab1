@@ -52,7 +52,7 @@
 
 | 类别 | 内容 | 位置 |
 |---|---|---|
-| 启动 | 商业论证、项目章程、干系人、启动会 | `docs/01-business-case.md`、`02-charter.md`、`03-stakeholders-kickoff.md` |
+| 启动 | 商业论证、项目章程、干系人、团队结构、启动会 | `docs/01-business-case.md`、`02-charter.md`、`03-stakeholders-kickoff.md`、`03a-team-structure.md` |
 | 规划 | 范围与 RTM、架构契约、WBS、进度、成本、风险质量、工作包 | `docs/04-scope.md` ~ `docs/10-work-packages.md` |
 | 执行 | 4 个开发包、5 个 QA 包、演示脚本、集成 | `src/`、`tests/`、`scripts/` |
 | 监控 | 台账、EVM、追踪甘特图、状态报告 | `plan/`、`docs/evidence/stage3-log.md`、`stage4-monitor.md` |
