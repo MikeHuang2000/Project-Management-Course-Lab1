@@ -59,8 +59,23 @@
 | 变更 | CR-01 影响分析、CCB 裁定、收尾追认 | `docs/evidence/cr01-impact.md`、`ccb-cr01.md`、`ccb-closeout.md` |
 | 收尾 | QA 各包证据、UAT、本记录 | `docs/evidence/qa-wp*.md`、`uat.md`、本文件 |
 | 计划工具 | CPM/CCPM/EVM/甘特/网络图/XML 生成脚本 | `tools/pm_metrics.py`、`tools/session_stats.py` |
-| 可导入 MS Project | WBS 与工期 | `wbs/wbs.xml` |
+| 可导入 MS Project | WBS 与工期 | `wbs/wbs.xml`（详细 30 任务）、`wbs/wbs-msp.xml`（整日版 20 任务，截图用） |
 | 交付物 | 可运行原型 + 说明 | `src/`、`README.md` |
+
+说明：`wbs/wbs.xml` 是 30 任务的详细 WBS，保留完整结构与基线，供归档和追溯，
+不建议直接导入截图。`wbs/wbs-msp.xml` 是专供 MS Project 截图的整日粒度版本：
+30 个任务合并为 20 个，每个任务不少于 1 天，关键路径 19.75 天，2026-11-27
+完成，仍满足 20 天承诺；由 `tools/gen_msp_wbs.py` 从 `plan/tasks.csv` 生成，
+并经 MPXJ 按 MSPDI 规范重写。
+
+导入时踩到的坑记录如下，避免以后重复排查：Project 对本机 MSPDI 文件的
+`<Manual>` 位置敏感。放在 `<Notes>` 之后时，任务会被当成手动排程，开始时间
+全部重置为项目开始日、工期变成“完成日 − 项目开始日”；按规范放在
+`<Active>` 之后、`<Type>` 之前，再导入即为自动排程，日期、工期、前置关系
+全部正确。规范化用的中间文件不保留，最终只提交 `wbs/wbs-msp.xml`。
+
+4.2 与 5.3 是范围置换后分别并入 4.1、5.2 的任务：基线保留 0.5 天计划，
+实际工时记 0，因此追踪甘特图以“并入前序”标记显示，而非漏画。
 
 ## 6. 移交与遗留
 

@@ -108,16 +108,25 @@ def critical_path(tasks, order):
 
 # ---------------------------------------------------------------- calendar
 def day_to_date(start, d):
-    """d = working-day offset (float) -> (date, hour within 08:00-16:00 workday)."""
-    whole = int(math.floor(d + 1e-9))
-    frac = d - whole
+    """d = working-day offset -> (date, clock hour), 08:00-12:00 / 13:00-17:00。
+
+    整日偏移落在 17:00（工作日结束），而不是次日 08:00，保证 Start/Finish
+    与 Duration 在 MS Project 中自洽。
+    """
+    total_hours = d * 8
+    whole = int(math.floor(total_hours / 8 + 1e-9))
+    within = total_hours - whole * 8
+    if within < 1e-9 and whole > 0:
+        whole -= 1
+        within = 8.0
     cur = start
     added = 0
     while added < whole:
         cur += dt.timedelta(days=1)
         if cur.weekday() < 5:
             added += 1
-    return cur, 8 + frac * 8
+    clock = 8 + within + (1 if within > 4 + 1e-9 else 0)  # 跨过 12:00-13:00 午休
+    return cur, clock
 
 
 def fmt_date(start, d):
@@ -310,85 +319,207 @@ def cmd_xml(a):
 
     def dur_str(days):
         h = days * 8
-        return "PT%sH0M0S" % (("%.2f" % h).rstrip("0").rstrip("."))
+        if abs(h - round(h)) < 1e-9:
+            return "PT%dH0M0S" % int(round(h))
+        # 非整小时：拆成小时+分钟，避免出现 PT5.5H 这种非法写法
+        whole = int(h)
+        minutes = int(round((h - whole) * 60))
+        return "PT%dH%dM0S" % (whole, minutes)
 
+    def dstr(d):
+        return fmt_date(start, d).replace(" ", "T") + ":00"
+
+    last_ef = max(t["ef"] for t in tasks.values())
+    stamp = start.isoformat() + "T08:00:00"
+
+    # 结构对齐可正常导入的参考文件（wbs/参考wbs.xml）：
+    # 自动安排、标准日历、Work + 资源分配、完整的 Early/Late 字段。
     root = ET.Element("Project", xmlns="http://schemas.microsoft.com/project")
-    ET.SubElement(root, "Name").text = "实验室设备借用管理系统（DeviceLoan MVP）"
-    ET.SubElement(root, "Title").text = "DeviceLoan MVP WBS"
-    ET.SubElement(root, "ScheduleFromStart").text = "1"
-    ET.SubElement(root, "StartDate").text = start.isoformat() + "T08:00:00"
-    ET.SubElement(root, "FinishDate").text = (
-        dt.date.fromisoformat(fmt_date(start, max(t["ef"] for t in tasks.values())).split(" ")[0]).isoformat()
-        + "T17:00:00")
-    ET.SubElement(root, "CurrencyDigits").text = "0"
-    ET.SubElement(root, "CurrencySymbol").text = "¥"
+    header = [
+        ("SaveVersion", "14"),
+        ("Name", "实验室设备借用管理系统（DeviceLoan MVP）"),
+        ("Title", "DeviceLoan MVP WBS"),
+        ("Subject", "实验室设备借用管理 MVP"),
+        ("Category", "课程实验"),
+        ("Company", "DeviceLoan 项目组"),
+        ("Manager", "PM"),
+        ("Author", "多智能体团队"),
+        ("CreationDate", stamp),
+        ("LastSaved", stamp),
+        ("ScheduleFromStart", "1"),
+        ("StartDate", stamp),
+        ("FinishDate", dstr(last_ef)),
+        ("FYStartDate", "1"),
+        ("CriticalSlackLimit", "0"),
+        ("CurrencyDigits", "2"),
+        ("CurrencySymbol", "CNY"),
+        ("CurrencyCode", "CNY"),
+        ("CurrencySymbolPosition", "0"),
+        ("CalendarUID", "1"),
+        ("DefaultStartTime", "08:00:00"),
+        ("DefaultFinishTime", "17:00:00"),
+        ("MinutesPerDay", "480"),
+        ("MinutesPerWeek", "2400"),
+        ("DaysPerMonth", "20"),
+        ("DefaultTaskType", "0"),
+        ("DefaultFixedCostAccrual", "3"),
+        ("DefaultStandardRate", "0"),
+        ("DefaultOvertimeRate", "0"),
+        ("DurationFormat", "7"),
+        ("WorkFormat", "2"),
+        ("EditableActualCosts", "0"),
+        ("HonorConstraints", "0"),
+        ("InsertedProjectsLikeSummary", "0"),
+        ("MultipleCriticalPaths", "0"),
+        ("NewTasksEffortDriven", "0"),
+        ("NewTasksEstimated", "1"),
+        ("NewTasksAreManual", "0"),
+        ("SplitsInProgressTasks", "0"),
+        ("SpreadActualCost", "0"),
+        ("SpreadPercentComplete", "0"),
+        ("TaskUpdatesResource", "1"),
+        ("FiscalYearStart", "0"),
+        ("WeekStartDay", "1"),
+        ("MoveCompletedEndsBack", "0"),
+        ("MoveRemainingStartsBack", "0"),
+        ("MoveRemainingStartsForward", "0"),
+        ("MoveCompletedEndsForward", "0"),
+        ("BaselineForEarnedValue", "0"),
+        ("AutoAddNewResourcesAndTasks", "1"),
+        ("CurrentDate", stamp),
+        ("MicrosoftProjectServerURL", "0"),
+        ("Autolink", "1"),
+        ("NewTaskStartDate", "0"),
+        ("DefaultTaskEVMethod", "0"),
+        ("ProjectExternallyEdited", "0"),
+        ("ExtendedCreationDate", stamp),
+        ("ActualsInSync", "0"),
+        ("RemoveFileProperties", "0"),
+        ("AdminProject", "0"),
+    ]
+    for tag, val in header:
+        ET.SubElement(root, tag).text = val
+
+    # 项目日历：周一至周五，08:00-12:00、13:00-17:00
+    cals = ET.SubElement(root, "Calendars")
+    cal = ET.SubElement(cals, "Calendar")
+    ET.SubElement(cal, "UID").text = "1"
+    ET.SubElement(cal, "Name").text = "Standard"
+    ET.SubElement(cal, "IsBaseCalendar").text = "1"
+    ET.SubElement(cal, "BaseCalendarUID").text = "-1"
+    wds = ET.SubElement(cal, "WeekDays")
+    for day in range(1, 8):
+        wd = ET.SubElement(wds, "WeekDay")
+        ET.SubElement(wd, "DayType").text = str(day)
+        working = day not in (1, 7)
+        ET.SubElement(wd, "DayWorking").text = "1" if working else "0"
+        if working:
+            wts = ET.SubElement(wd, "WorkingTimes")
+            for frm, to in (("08:00:00", "12:00:00"), ("13:00:00", "17:00:00")):
+                wt = ET.SubElement(wts, "WorkingTime")
+                ET.SubElement(wt, "FromTime").text = frm
+                ET.SubElement(wt, "ToTime").text = to
+
+    roles = sorted(RATES)
+    res_uid = {role: i for i, role in enumerate(roles, start=1)}
 
     tks = ET.SubElement(root, "Tasks")
     uid_of, uid = {}, 1
-    # summary rows per phase
     phases = []
     for tid in order:
-        ph = tasks[tid]["id"].split(".")[0]
+        ph = tid.split(".")[0]
         if ph not in phases:
             phases.append(ph)
-    for ph in phases:
-        kids = [tasks[x] for x in order if x.split(".")[0] == ph]
-        s = ET.SubElement(tks, "Task")
-        ET.SubElement(s, "UID").text = str(uid)
-        ET.SubElement(s, "ID").text = str(uid)
-        ET.SubElement(s, "Name").text = "%s %s" % (ph, PHASE_NAMES.get(ph, ""))
-        ET.SubElement(s, "Type").text = "1"
-        ET.SubElement(s, "IsNull").text = "0"
-        ET.SubElement(s, "WBS").text = ph
-        ET.SubElement(s, "OutlineNumber").text = ph
-        ET.SubElement(s, "OutlineLevel").text = "1"
-        ET.SubElement(s, "Start").text = start.isoformat() + "T08:00:00"
-        ET.SubElement(s, "Finish").text = start.isoformat() + "T17:00:00"
-        ET.SubElement(s, "Duration").text = dur_str(max(k["ef"] for k in kids) - min(k["es"] for k in kids))
-        ET.SubElement(s, "DurationFormat").text = "7"
-        ET.SubElement(s, "Milestone").text = "0"
-        ET.SubElement(s, "Summary").text = "1"
-        uid_of["phase:" + ph] = uid
-        uid += 1
 
-    for tid in order:
-        t = tasks[tid]
+    def add_task(name, wbs, level, es, ef, ls, lf, duration, summary, critical,
+                 milestone, notes, preds):
+        nonlocal uid
         e = ET.SubElement(tks, "Task")
-        ET.SubElement(e, "UID").text = str(uid)
-        ET.SubElement(e, "ID").text = str(uid)
-        ET.SubElement(e, "Name").text = t["name"]
-        ET.SubElement(e, "Type").text = "1"
-        ET.SubElement(e, "IsNull").text = "0"
-        ET.SubElement(e, "WBS").text = tid
-        ET.SubElement(e, "OutlineNumber").text = tid
-        ET.SubElement(e, "OutlineLevel").text = "2"
-        ET.SubElement(e, "Start").text = fmt_date(start, t["es"]).replace(" ", "T") + ":00"
-        ET.SubElement(e, "Finish").text = fmt_date(start, t["ef"]).replace(" ", "T") + ":00"
-        ET.SubElement(e, "Duration").text = dur_str(t["duration"])
-        ET.SubElement(e, "DurationFormat").text = "7"
-        ET.SubElement(e, "Work").text = dur_str(t["duration"])
-        ET.SubElement(e, "Milestone").text = "1" if t["milestone"] else "0"
-        ET.SubElement(e, "Summary").text = "0"
-        ET.SubElement(e, "Cost").text = "%.2f" % t["budget"]
-        ET.SubElement(e, "ResourceNames").text = t["resource"]
-        for p in t["preds"]:
+        fields = [
+            ("UID", str(uid)), ("ID", str(uid)),
+            ("Name", name), ("Type", "1"), ("IsNull", "0"),
+            ("CreateDate", stamp),
+            ("WBS", wbs), ("OutlineNumber", wbs), ("OutlineLevel", str(level)),
+            ("Priority", "500"),
+            ("Start", dstr(es)), ("Finish", dstr(ef)),
+            ("Duration", dur_str(duration)), ("DurationFormat", "7"),
+            ("Work", dur_str(duration)),
+            ("ResumeValid", "0"), ("EffortDriven", "0"), ("Recurring", "0"),
+            ("OverAllocated", "0"), ("Estimated", "0"),
+            ("Milestone", "1" if milestone else "0"),
+            ("Summary", "1" if summary else "0"),
+            ("Critical", "1" if critical else "0"),
+            ("IsSubproject", "0"), ("ExternalTask", "0"),
+            ("EarlyStart", dstr(es)), ("EarlyFinish", dstr(ef)),
+            ("LateStart", dstr(ls)), ("LateFinish", dstr(lf)),
+            ("LevelingCanSplit", "0"),
+            ("Notes", notes),
+            ("Manual", "0"),
+        ]
+        for tag, val in fields:
+            ET.SubElement(e, tag).text = val
+        for p in preds:
             link = ET.SubElement(e, "PredecessorLink")
             ET.SubElement(link, "PredecessorUID").text = str(uid_of[p])
             ET.SubElement(link, "Type").text = "1"
+            ET.SubElement(link, "CrossProject").text = "0"
             ET.SubElement(link, "LinkLag").text = "0"
             ET.SubElement(link, "LagFormat").text = "7"
-        uid_of[t["id"]] = uid
+        out = uid
         uid += 1
+        return out
+
+    # 按大纲顺序输出：每个阶段汇总行紧跟其子任务
+    for ph in phases:
+        kids = [tasks[x] for x in order if x.split(".")[0] == ph]
+        es = min(k["es"] for k in kids)
+        ef = max(k["ef"] for k in kids)
+        ls = min(k["ls"] for k in kids)
+        lf = max(k["lf"] for k in kids)
+        uid_of["phase:" + ph] = add_task(
+            "%s %s" % (ph, PHASE_NAMES.get(ph, "")), ph, 1, es, ef, ls, lf,
+            ef - es, True, any(k["critical"] for k in kids), False,
+            "阶段汇总", [])
+
+        for tid in [x for x in order if x.split(".")[0] == ph]:
+            t = tasks[tid]
+            task_uid = add_task(
+                t["name"], tid, 2, t["es"], t["ef"], t["ls"], t["lf"],
+                t["duration"], False, t["critical"], t["milestone"],
+                "负责：%s；计划 %.2f 人日" % (t["resource"], t["person_days"]),
+                t["preds"])
+            uid_of[tid] = task_uid
 
     res = ET.SubElement(root, "Resources")
-    for i, role in enumerate(sorted(RATES), start=1):
+    for role in roles:
         r = ET.SubElement(res, "Resource")
-        ET.SubElement(r, "UID").text = str(i)
-        ET.SubElement(r, "ID").text = str(i)
+        ET.SubElement(r, "UID").text = str(res_uid[role])
+        ET.SubElement(r, "ID").text = str(res_uid[role])
         ET.SubElement(r, "Name").text = role
         ET.SubElement(r, "Type").text = "1"
-        ET.SubElement(r, "StandardRate").text = "%.0f" % RATES[role]
-        ET.SubElement(r, "StandardRateFormat").text = "3"
+        ET.SubElement(r, "IsNull").text = "0"
+        ET.SubElement(r, "Initials").text = role.upper()[:3]
+        ET.SubElement(r, "MaxUnits").text = "1"
+        ET.SubElement(r, "CanLevel").text = "0"
+        ET.SubElement(r, "StandardRate").text = "0"
+        ET.SubElement(r, "StandardRateFormat").text = "2"
+        ET.SubElement(r, "OvertimeRate").text = "0"
+        ET.SubElement(r, "OvertimeRateFormat").text = "2"
+        ET.SubElement(r, "CostPerUse").text = "0"
+        ET.SubElement(r, "CalendarUID").text = "1"
+
+    asg = ET.SubElement(root, "Assignments")
+    asg_uid = 1
+    for tid in order:
+        t = tasks[tid]
+        asg_el = ET.SubElement(asg, "Assignment")
+        ET.SubElement(asg_el, "UID").text = str(asg_uid)
+        ET.SubElement(asg_el, "TaskUID").text = str(uid_of[tid])
+        ET.SubElement(asg_el, "ResourceUID").text = str(res_uid[t["resource"]])
+        ET.SubElement(asg_el, "PercentWorkComplete").text = "0"
+        ET.SubElement(asg_el, "Units").text = "1"
+        ET.SubElement(asg_el, "Work").text = dur_str(t["duration"])
+        asg_uid += 1
 
     tree = ET.ElementTree(root)
     ET.indent(tree, space="  ")
@@ -515,12 +646,17 @@ def cmd_track(a):
         ax.barh(i, t["duration"], left=t["es"], height=0.64, facecolor="none",
                 edgecolor="#9aa5ad", linestyle="--", linewidth=0.8)
         act = actuals.get(tid)
-        if act is not None:
+        if act is not None and act > 1e-9:
             color = "#2e8b57" if pct >= 1.0 else ("#d68910" if pct > 0 else "#5b8db8")
             ax.barh(i, act, left=t["es"], height=0.40, color=color, alpha=0.95)
             if abs(act - t["duration"]) > 1e-9:
                 ax.text(t["es"] + max(act, t["duration"]) + 0.12, i, "%+.2f" % (act - t["duration"]),
                         va="center", fontsize=6.5, color="#c0392b")
+        elif act is not None and pct >= 1.0:
+            # 合并任务：工作量已并入前序任务，无独立实际工时
+            ax.plot([t["es"]], [i], marker="D", markersize=4.5, color="#7f8c8d")
+            ax.text(t["es"] + 0.12, i, "并入前序", va="center",
+                    fontsize=6.5, color="#7f8c8d")
         labels.append("%s %s" % (tid, t["name"]))
     ax.axvline(dd, color="#c0392b", linestyle="-.", linewidth=1.2)
     ax.text(dd + 0.08, -0.9, "数据日期 %.2f" % dd, color="#c0392b", fontsize=8, va="top")
@@ -534,8 +670,9 @@ def cmd_track(a):
     ax.grid(axis="x", linestyle=":", alpha=0.5)
     ax.legend(handles=[Patch(facecolor="none", edgecolor="#9aa5ad", linestyle="--", label="计划工期"),
                        Patch(color="#2e8b57", label="已完成"),
-                       Patch(color="#d68910", label="进行中")],
-              loc="lower right", fontsize=8)
+                       Patch(color="#d68910", label="进行中"),
+                       Patch(color="#7f8c8d", label="并入前序任务（无独立工时）")],
+              loc="upper center", bbox_to_anchor=(0.5, -0.06), ncol=4, fontsize=8, frameon=False)
     fig.tight_layout()
     fig.savefig(a.out, dpi=160)
     print(json.dumps(evm, ensure_ascii=False, indent=2))

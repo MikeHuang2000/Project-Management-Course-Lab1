@@ -1,12 +1,153 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Project xmlns="http://schemas.microsoft.com/project">
+  <SaveVersion>14</SaveVersion>
   <Name>实验室设备借用管理系统（DeviceLoan MVP）</Name>
   <Title>DeviceLoan MVP WBS</Title>
+  <Subject>实验室设备借用管理 MVP</Subject>
+  <Category>课程实验</Category>
+  <Company>DeviceLoan 项目组</Company>
+  <Manager>PM</Manager>
+  <Author>多智能体团队</Author>
+  <CreationDate>2026-11-02T08:00:00</CreationDate>
+  <LastSaved>2026-11-02T08:00:00</LastSaved>
   <ScheduleFromStart>1</ScheduleFromStart>
   <StartDate>2026-11-02T08:00:00</StartDate>
-  <FinishDate>2026-11-26T17:00:00</FinishDate>
-  <CurrencyDigits>0</CurrencyDigits>
-  <CurrencySymbol>¥</CurrencySymbol>
+  <FinishDate>2026-11-26T15:00:00</FinishDate>
+  <FYStartDate>1</FYStartDate>
+  <CriticalSlackLimit>0</CriticalSlackLimit>
+  <CurrencyDigits>2</CurrencyDigits>
+  <CurrencySymbol>CNY</CurrencySymbol>
+  <CurrencyCode>CNY</CurrencyCode>
+  <CurrencySymbolPosition>0</CurrencySymbolPosition>
+  <CalendarUID>1</CalendarUID>
+  <DefaultStartTime>08:00:00</DefaultStartTime>
+  <DefaultFinishTime>17:00:00</DefaultFinishTime>
+  <MinutesPerDay>480</MinutesPerDay>
+  <MinutesPerWeek>2400</MinutesPerWeek>
+  <DaysPerMonth>20</DaysPerMonth>
+  <DefaultTaskType>0</DefaultTaskType>
+  <DefaultFixedCostAccrual>3</DefaultFixedCostAccrual>
+  <DefaultStandardRate>0</DefaultStandardRate>
+  <DefaultOvertimeRate>0</DefaultOvertimeRate>
+  <DurationFormat>7</DurationFormat>
+  <WorkFormat>2</WorkFormat>
+  <EditableActualCosts>0</EditableActualCosts>
+  <HonorConstraints>0</HonorConstraints>
+  <InsertedProjectsLikeSummary>0</InsertedProjectsLikeSummary>
+  <MultipleCriticalPaths>0</MultipleCriticalPaths>
+  <NewTasksEffortDriven>0</NewTasksEffortDriven>
+  <NewTasksEstimated>1</NewTasksEstimated>
+  <NewTasksAreManual>0</NewTasksAreManual>
+  <SplitsInProgressTasks>0</SplitsInProgressTasks>
+  <SpreadActualCost>0</SpreadActualCost>
+  <SpreadPercentComplete>0</SpreadPercentComplete>
+  <TaskUpdatesResource>1</TaskUpdatesResource>
+  <FiscalYearStart>0</FiscalYearStart>
+  <WeekStartDay>1</WeekStartDay>
+  <MoveCompletedEndsBack>0</MoveCompletedEndsBack>
+  <MoveRemainingStartsBack>0</MoveRemainingStartsBack>
+  <MoveRemainingStartsForward>0</MoveRemainingStartsForward>
+  <MoveCompletedEndsForward>0</MoveCompletedEndsForward>
+  <BaselineForEarnedValue>0</BaselineForEarnedValue>
+  <AutoAddNewResourcesAndTasks>1</AutoAddNewResourcesAndTasks>
+  <CurrentDate>2026-11-02T08:00:00</CurrentDate>
+  <MicrosoftProjectServerURL>0</MicrosoftProjectServerURL>
+  <Autolink>1</Autolink>
+  <NewTaskStartDate>0</NewTaskStartDate>
+  <DefaultTaskEVMethod>0</DefaultTaskEVMethod>
+  <ProjectExternallyEdited>0</ProjectExternallyEdited>
+  <ExtendedCreationDate>2026-11-02T08:00:00</ExtendedCreationDate>
+  <ActualsInSync>0</ActualsInSync>
+  <RemoveFileProperties>0</RemoveFileProperties>
+  <AdminProject>0</AdminProject>
+  <Calendars>
+    <Calendar>
+      <UID>1</UID>
+      <Name>Standard</Name>
+      <IsBaseCalendar>1</IsBaseCalendar>
+      <BaseCalendarUID>-1</BaseCalendarUID>
+      <WeekDays>
+        <WeekDay>
+          <DayType>1</DayType>
+          <DayWorking>0</DayWorking>
+        </WeekDay>
+        <WeekDay>
+          <DayType>2</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>3</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>4</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>5</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>6</DayType>
+          <DayWorking>1</DayWorking>
+          <WorkingTimes>
+            <WorkingTime>
+              <FromTime>08:00:00</FromTime>
+              <ToTime>12:00:00</ToTime>
+            </WorkingTime>
+            <WorkingTime>
+              <FromTime>13:00:00</FromTime>
+              <ToTime>17:00:00</ToTime>
+            </WorkingTime>
+          </WorkingTimes>
+        </WeekDay>
+        <WeekDay>
+          <DayType>7</DayType>
+          <DayWorking>0</DayWorking>
+        </WeekDay>
+      </WeekDays>
+    </Calendar>
+  </Calendars>
   <Tasks>
     <Task>
       <UID>1</UID>
@@ -14,145 +155,303 @@
       <Name>1 启动</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
       <WBS>1</WBS>
       <OutlineNumber>1</OutlineNumber>
       <OutlineLevel>1</OutlineLevel>
+      <Priority>500</Priority>
       <Start>2026-11-02T08:00:00</Start>
-      <Finish>2026-11-02T17:00:00</Finish>
+      <Finish>2026-11-04T12:00:00</Finish>
       <Duration>PT20H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
+      <Work>PT20H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>1</Summary>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-02T08:00:00</EarlyStart>
+      <EarlyFinish>2026-11-04T12:00:00</EarlyFinish>
+      <LateStart>2026-11-02T08:00:00</LateStart>
+      <LateFinish>2026-11-05T17:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>阶段汇总</Notes>
+      <Manual>0</Manual>
     </Task>
     <Task>
       <UID>2</UID>
       <ID>2</ID>
-      <Name>2 规划</Name>
-      <Type>1</Type>
-      <IsNull>0</IsNull>
-      <WBS>2</WBS>
-      <OutlineNumber>2</OutlineNumber>
-      <OutlineLevel>1</OutlineLevel>
-      <Start>2026-11-02T08:00:00</Start>
-      <Finish>2026-11-02T17:00:00</Finish>
-      <Duration>PT36H0M0S</Duration>
-      <DurationFormat>7</DurationFormat>
-      <Milestone>0</Milestone>
-      <Summary>1</Summary>
-    </Task>
-    <Task>
-      <UID>3</UID>
-      <ID>3</ID>
-      <Name>3 执行</Name>
-      <Type>1</Type>
-      <IsNull>0</IsNull>
-      <WBS>3</WBS>
-      <OutlineNumber>3</OutlineNumber>
-      <OutlineLevel>1</OutlineLevel>
-      <Start>2026-11-02T08:00:00</Start>
-      <Finish>2026-11-02T17:00:00</Finish>
-      <Duration>PT86H0M0S</Duration>
-      <DurationFormat>7</DurationFormat>
-      <Milestone>0</Milestone>
-      <Summary>1</Summary>
-    </Task>
-    <Task>
-      <UID>4</UID>
-      <ID>4</ID>
-      <Name>4 监控</Name>
-      <Type>1</Type>
-      <IsNull>0</IsNull>
-      <WBS>4</WBS>
-      <OutlineNumber>4</OutlineNumber>
-      <OutlineLevel>1</OutlineLevel>
-      <Start>2026-11-02T08:00:00</Start>
-      <Finish>2026-11-02T17:00:00</Finish>
-      <Duration>PT64H0M0S</Duration>
-      <DurationFormat>7</DurationFormat>
-      <Milestone>0</Milestone>
-      <Summary>1</Summary>
-    </Task>
-    <Task>
-      <UID>5</UID>
-      <ID>5</ID>
-      <Name>5 收尾</Name>
-      <Type>1</Type>
-      <IsNull>0</IsNull>
-      <WBS>5</WBS>
-      <OutlineNumber>5</OutlineNumber>
-      <OutlineLevel>1</OutlineLevel>
-      <Start>2026-11-02T08:00:00</Start>
-      <Finish>2026-11-02T17:00:00</Finish>
-      <Duration>PT8H0M0S</Duration>
-      <DurationFormat>7</DurationFormat>
-      <Milestone>0</Milestone>
-      <Summary>1</Summary>
-    </Task>
-    <Task>
-      <UID>6</UID>
-      <ID>6</ID>
       <Name>商业论证与NPV初筛</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
       <WBS>1.1</WBS>
       <OutlineNumber>1.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
+      <Priority>500</Priority>
       <Start>2026-11-02T08:00:00</Start>
       <Finish>2026-11-02T12:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>300.00</Cost>
-      <ResourceNames>BA</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-02T08:00:00</EarlyStart>
+      <EarlyFinish>2026-11-02T12:00:00</EarlyFinish>
+      <LateStart>2026-11-02T08:00:00</LateStart>
+      <LateFinish>2026-11-02T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：BA；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
     </Task>
     <Task>
-      <UID>7</UID>
-      <ID>7</ID>
+      <UID>3</UID>
+      <ID>3</ID>
       <Name>项目章程</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
       <WBS>1.2</WBS>
       <OutlineNumber>1.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
+      <Priority>500</Priority>
       <Start>2026-11-02T12:00:00</Start>
-      <Finish>2026-11-03T08:00:00</Finish>
+      <Finish>2026-11-02T17:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>300.00</Cost>
-      <ResourceNames>BA</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-02T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-02T17:00:00</EarlyFinish>
+      <LateStart>2026-11-02T12:00:00</LateStart>
+      <LateFinish>2026-11-02T17:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：BA；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>6</PredecessorUID>
+        <PredecessorUID>2</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
     </Task>
     <Task>
-      <UID>8</UID>
-      <ID>8</ID>
+      <UID>4</UID>
+      <ID>4</ID>
       <Name>干系人登记与启动会</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
       <WBS>1.3</WBS>
       <OutlineNumber>1.3</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-03T08:00:00</Start>
+      <Priority>500</Priority>
+      <Start>2026-11-02T17:00:00</Start>
       <Finish>2026-11-03T12:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>300.00</Cost>
-      <ResourceNames>BA</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-02T17:00:00</EarlyStart>
+      <EarlyFinish>2026-11-03T12:00:00</EarlyFinish>
+      <LateStart>2026-11-02T17:00:00</LateStart>
+      <LateFinish>2026-11-03T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：BA；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>7</PredecessorUID>
+        <PredecessorUID>3</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+    </Task>
+    <Task>
+      <UID>5</UID>
+      <ID>5</ID>
+      <Name>启动阶段评审</Name>
+      <Type>1</Type>
+      <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>1.4</WBS>
+      <OutlineNumber>1.4</OutlineNumber>
+      <OutlineLevel>2</OutlineLevel>
+      <Priority>500</Priority>
+      <Start>2026-11-03T12:00:00</Start>
+      <Finish>2026-11-03T17:00:00</Finish>
+      <Duration>PT4H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-03T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-03T17:00:00</EarlyFinish>
+      <LateStart>2026-11-03T12:00:00</LateStart>
+      <LateFinish>2026-11-03T17:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：CCB；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
+      <PredecessorLink>
+        <PredecessorUID>4</PredecessorUID>
+        <Type>1</Type>
+        <CrossProject>0</CrossProject>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+    </Task>
+    <Task>
+      <UID>6</UID>
+      <ID>6</ID>
+      <Name>启动阶段收口与派单</Name>
+      <Type>1</Type>
+      <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>1.5</WBS>
+      <OutlineNumber>1.5</OutlineNumber>
+      <OutlineLevel>2</OutlineLevel>
+      <Priority>500</Priority>
+      <Start>2026-11-03T17:00:00</Start>
+      <Finish>2026-11-04T12:00:00</Finish>
+      <Duration>PT4H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
+      <Critical>0</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-03T17:00:00</EarlyStart>
+      <EarlyFinish>2026-11-04T12:00:00</EarlyFinish>
+      <LateStart>2026-11-05T12:00:00</LateStart>
+      <LateFinish>2026-11-05T17:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
+      <PredecessorLink>
+        <PredecessorUID>5</PredecessorUID>
+        <Type>1</Type>
+        <CrossProject>0</CrossProject>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+    </Task>
+    <Task>
+      <UID>7</UID>
+      <ID>7</ID>
+      <Name>2 规划</Name>
+      <Type>1</Type>
+      <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2</WBS>
+      <OutlineNumber>2</OutlineNumber>
+      <OutlineLevel>1</OutlineLevel>
+      <Priority>500</Priority>
+      <Start>2026-11-03T17:00:00</Start>
+      <Finish>2026-11-10T12:00:00</Finish>
+      <Duration>PT36H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Work>PT36H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
+      <Milestone>0</Milestone>
+      <Summary>1</Summary>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-03T17:00:00</EarlyStart>
+      <EarlyFinish>2026-11-10T12:00:00</EarlyFinish>
+      <LateStart>2026-11-03T17:00:00</LateStart>
+      <LateFinish>2026-11-10T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>阶段汇总</Notes>
+      <Manual>0</Manual>
+    </Task>
+    <Task>
+      <UID>8</UID>
+      <ID>8</ID>
+      <Name>范围说明书与需求追溯矩阵</Name>
+      <Type>1</Type>
+      <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2.1</WBS>
+      <OutlineNumber>2.1</OutlineNumber>
+      <OutlineLevel>2</OutlineLevel>
+      <Priority>500</Priority>
+      <Start>2026-11-03T17:00:00</Start>
+      <Finish>2026-11-04T15:00:00</Finish>
+      <Duration>PT6H0M0S</Duration>
+      <DurationFormat>7</DurationFormat>
+      <Work>PT6H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
+      <Milestone>0</Milestone>
+      <Summary>0</Summary>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-03T17:00:00</EarlyStart>
+      <EarlyFinish>2026-11-04T15:00:00</EarlyFinish>
+      <LateStart>2026-11-03T17:00:00</LateStart>
+      <LateFinish>2026-11-04T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：BA；计划 0.75 人日</Notes>
+      <Manual>0</Manual>
+      <PredecessorLink>
+        <PredecessorUID>5</PredecessorUID>
+        <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -160,24 +459,40 @@
     <Task>
       <UID>9</UID>
       <ID>9</ID>
-      <Name>启动阶段评审</Name>
+      <Name>架构与接口契约</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>1.4</WBS>
-      <OutlineNumber>1.4</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2.2</WBS>
+      <OutlineNumber>2.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-03T12:00:00</Start>
-      <Finish>2026-11-04T08:00:00</Finish>
-      <Duration>PT4H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-04T15:00:00</Start>
+      <Finish>2026-11-05T12:00:00</Finish>
+      <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT4H0M0S</Work>
+      <Work>PT6H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>250.00</Cost>
-      <ResourceNames>CCB</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-04T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-05T12:00:00</EarlyFinish>
+      <LateStart>2026-11-04T15:00:00</LateStart>
+      <LateFinish>2026-11-05T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：BA；计划 0.75 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>8</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -185,24 +500,40 @@
     <Task>
       <UID>10</UID>
       <ID>10</ID>
-      <Name>启动阶段收口与派单</Name>
+      <Name>WBS与WBS词典</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>1.5</WBS>
-      <OutlineNumber>1.5</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2.3</WBS>
+      <OutlineNumber>2.3</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-04T08:00:00</Start>
-      <Finish>2026-11-04T12:00:00</Finish>
+      <Priority>500</Priority>
+      <Start>2026-11-05T12:00:00</Start>
+      <Finish>2026-11-05T17:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>400.00</Cost>
-      <ResourceNames>PM</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-05T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-05T17:00:00</EarlyFinish>
+      <LateStart>2026-11-05T12:00:00</LateStart>
+      <LateFinish>2026-11-05T17:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：BA；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>9</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -210,24 +541,40 @@
     <Task>
       <UID>11</UID>
       <ID>11</ID>
-      <Name>范围说明书与需求追溯矩阵</Name>
+      <Name>风险登记与质量计划</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>2.1</WBS>
-      <OutlineNumber>2.1</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2.4</WBS>
+      <OutlineNumber>2.4</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-04T08:00:00</Start>
-      <Finish>2026-11-04T14:00:00</Finish>
-      <Duration>PT6H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-05T12:00:00</Start>
+      <Finish>2026-11-06T12:00:00</Finish>
+      <Duration>PT8H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT6H0M0S</Work>
+      <Work>PT8H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>450.00</Cost>
-      <ResourceNames>BA</ResourceNames>
+      <Critical>0</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-05T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-06T12:00:00</EarlyFinish>
+      <LateStart>2026-11-06T17:00:00</LateStart>
+      <LateFinish>2026-11-09T17:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：BA；计划 1.00 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>9</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -235,24 +582,47 @@
     <Task>
       <UID>12</UID>
       <ID>12</ID>
-      <Name>架构与接口契约</Name>
+      <Name>进度计划与关键路径分析</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>2.2</WBS>
-      <OutlineNumber>2.2</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2.5</WBS>
+      <OutlineNumber>2.5</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-04T14:00:00</Start>
-      <Finish>2026-11-05T12:00:00</Finish>
-      <Duration>PT6H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-05T17:00:00</Start>
+      <Finish>2026-11-06T12:00:00</Finish>
+      <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT6H0M0S</Work>
+      <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>450.00</Cost>
-      <ResourceNames>BA</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-05T17:00:00</EarlyStart>
+      <EarlyFinish>2026-11-06T12:00:00</EarlyFinish>
+      <LateStart>2026-11-05T17:00:00</LateStart>
+      <LateFinish>2026-11-06T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>11</PredecessorUID>
+        <PredecessorUID>10</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <PredecessorLink>
+        <PredecessorUID>6</PredecessorUID>
+        <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -260,24 +630,40 @@
     <Task>
       <UID>13</UID>
       <ID>13</ID>
-      <Name>WBS与WBS词典</Name>
+      <Name>成本基线与EVM口径</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>2.3</WBS>
-      <OutlineNumber>2.3</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2.6</WBS>
+      <OutlineNumber>2.6</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-05T12:00:00</Start>
-      <Finish>2026-11-06T08:00:00</Finish>
-      <Duration>PT4H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-06T12:00:00</Start>
+      <Finish>2026-11-09T12:00:00</Finish>
+      <Duration>PT8H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT4H0M0S</Work>
+      <Work>PT8H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>300.00</Cost>
-      <ResourceNames>BA</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-06T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-09T12:00:00</EarlyFinish>
+      <LateStart>2026-11-06T12:00:00</LateStart>
+      <LateFinish>2026-11-09T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 1.00 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>12</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -285,24 +671,40 @@
     <Task>
       <UID>14</UID>
       <ID>14</ID>
-      <Name>风险登记与质量计划</Name>
+      <Name>甘特图与Project XML</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>2.4</WBS>
-      <OutlineNumber>2.4</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2.7</WBS>
+      <OutlineNumber>2.7</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-05T12:00:00</Start>
-      <Finish>2026-11-06T12:00:00</Finish>
-      <Duration>PT8H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-09T12:00:00</Start>
+      <Finish>2026-11-09T17:00:00</Finish>
+      <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT8H0M0S</Work>
+      <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>600.00</Cost>
-      <ResourceNames>BA</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-09T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-09T17:00:00</EarlyFinish>
+      <LateStart>2026-11-09T12:00:00</LateStart>
+      <LateFinish>2026-11-09T17:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>12</PredecessorUID>
+        <PredecessorUID>13</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -310,30 +712,47 @@
     <Task>
       <UID>15</UID>
       <ID>15</ID>
-      <Name>进度计划与关键路径分析</Name>
+      <Name>规划基线评审</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>2.5</WBS>
-      <OutlineNumber>2.5</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>2.8</WBS>
+      <OutlineNumber>2.8</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-06T08:00:00</Start>
-      <Finish>2026-11-06T12:00:00</Finish>
+      <Priority>500</Priority>
+      <Start>2026-11-09T17:00:00</Start>
+      <Finish>2026-11-10T12:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>400.00</Cost>
-      <ResourceNames>PM</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-09T17:00:00</EarlyStart>
+      <EarlyFinish>2026-11-10T12:00:00</EarlyFinish>
+      <LateStart>2026-11-09T17:00:00</LateStart>
+      <LateFinish>2026-11-10T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：CCB；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>13</PredecessorUID>
+        <PredecessorUID>14</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
       <PredecessorLink>
-        <PredecessorUID>10</PredecessorUID>
+        <PredecessorUID>11</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -341,49 +760,74 @@
     <Task>
       <UID>16</UID>
       <ID>16</ID>
-      <Name>成本基线与EVM口径</Name>
+      <Name>3 执行</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>2.6</WBS>
-      <OutlineNumber>2.6</OutlineNumber>
-      <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-06T12:00:00</Start>
-      <Finish>2026-11-09T12:00:00</Finish>
-      <Duration>PT8H0M0S</Duration>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3</WBS>
+      <OutlineNumber>3</OutlineNumber>
+      <OutlineLevel>1</OutlineLevel>
+      <Priority>500</Priority>
+      <Start>2026-11-10T12:00:00</Start>
+      <Finish>2026-11-25T10:00:00</Finish>
+      <Duration>PT86H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT8H0M0S</Work>
+      <Work>PT86H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
-      <Summary>0</Summary>
-      <Cost>800.00</Cost>
-      <ResourceNames>PM</ResourceNames>
-      <PredecessorLink>
-        <PredecessorUID>15</PredecessorUID>
-        <Type>1</Type>
-        <LinkLag>0</LinkLag>
-        <LagFormat>7</LagFormat>
-      </PredecessorLink>
+      <Summary>1</Summary>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-10T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-25T10:00:00</EarlyFinish>
+      <LateStart>2026-11-10T12:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>阶段汇总</Notes>
+      <Manual>0</Manual>
     </Task>
     <Task>
       <UID>17</UID>
       <ID>17</ID>
-      <Name>甘特图与Project XML</Name>
+      <Name>WP1账户与角色权限</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>2.7</WBS>
-      <OutlineNumber>2.7</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.1</WBS>
+      <OutlineNumber>3.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-09T12:00:00</Start>
-      <Finish>2026-11-10T08:00:00</Finish>
-      <Duration>PT4H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-10T12:00:00</Start>
+      <Finish>2026-11-12T12:00:00</Finish>
+      <Duration>PT16H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT4H0M0S</Work>
+      <Work>PT16H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>400.00</Cost>
-      <ResourceNames>PM</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-10T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-12T12:00:00</EarlyFinish>
+      <LateStart>2026-11-10T12:00:00</LateStart>
+      <LateFinish>2026-11-12T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：Dev；计划 1.75 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>16</PredecessorUID>
+        <PredecessorUID>15</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -391,30 +835,40 @@
     <Task>
       <UID>18</UID>
       <ID>18</ID>
-      <Name>规划基线评审</Name>
+      <Name>QA1验证账户与权限</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>2.8</WBS>
-      <OutlineNumber>2.8</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.2</WBS>
+      <OutlineNumber>3.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-10T08:00:00</Start>
-      <Finish>2026-11-10T12:00:00</Finish>
-      <Duration>PT4H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-12T12:00:00</Start>
+      <Finish>2026-11-13T10:00:00</Finish>
+      <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT4H0M0S</Work>
+      <Work>PT6H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>250.00</Cost>
-      <ResourceNames>CCB</ResourceNames>
+      <Critical>0</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-12T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-13T10:00:00</EarlyFinish>
+      <LateStart>2026-11-25T17:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：QA；计划 0.75 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>17</PredecessorUID>
         <Type>1</Type>
-        <LinkLag>0</LinkLag>
-        <LagFormat>7</LagFormat>
-      </PredecessorLink>
-      <PredecessorLink>
-        <PredecessorUID>14</PredecessorUID>
-        <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -422,24 +876,40 @@
     <Task>
       <UID>19</UID>
       <ID>19</ID>
-      <Name>WP1账户与角色权限</Name>
+      <Name>WP2设备目录与查询</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.1</WBS>
-      <OutlineNumber>3.1</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.3</WBS>
+      <OutlineNumber>3.3</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-10T12:00:00</Start>
-      <Finish>2026-11-12T12:00:00</Finish>
-      <Duration>PT16H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-12T12:00:00</Start>
+      <Finish>2026-11-13T15:00:00</Finish>
+      <Duration>PT10H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT16H0M0S</Work>
+      <Work>PT10H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>1137.50</Cost>
-      <ResourceNames>Dev</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-12T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-13T15:00:00</EarlyFinish>
+      <LateStart>2026-11-12T12:00:00</LateStart>
+      <LateFinish>2026-11-13T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：Dev；计划 1.25 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>18</PredecessorUID>
+        <PredecessorUID>17</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -447,24 +917,40 @@
     <Task>
       <UID>20</UID>
       <ID>20</ID>
-      <Name>QA1验证账户与权限</Name>
+      <Name>QA2验证设备查询</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.2</WBS>
-      <OutlineNumber>3.2</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.4</WBS>
+      <OutlineNumber>3.4</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-12T12:00:00</Start>
-      <Finish>2026-11-13T10:00:00</Finish>
+      <Priority>500</Priority>
+      <Start>2026-11-13T15:00:00</Start>
+      <Finish>2026-11-16T12:00:00</Finish>
       <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT6H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>337.50</Cost>
-      <ResourceNames>QA</ResourceNames>
+      <Critical>0</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-13T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-16T12:00:00</EarlyFinish>
+      <LateStart>2026-11-25T17:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：QA；计划 0.75 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>19</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -472,24 +958,40 @@
     <Task>
       <UID>21</UID>
       <ID>21</ID>
-      <Name>WP2设备目录与查询</Name>
+      <Name>WP3申请审批与冲突阻止</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.3</WBS>
-      <OutlineNumber>3.3</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.5</WBS>
+      <OutlineNumber>3.5</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-12T12:00:00</Start>
-      <Finish>2026-11-13T14:00:00</Finish>
-      <Duration>PT10H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-13T15:00:00</Start>
+      <Finish>2026-11-17T15:00:00</Finish>
+      <Duration>PT16H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT10H0M0S</Work>
+      <Work>PT16H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>812.50</Cost>
-      <ResourceNames>Dev</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-13T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-17T15:00:00</EarlyFinish>
+      <LateStart>2026-11-13T15:00:00</LateStart>
+      <LateFinish>2026-11-17T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：Dev；计划 2.00 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>19</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -497,24 +999,40 @@
     <Task>
       <UID>22</UID>
       <ID>22</ID>
-      <Name>QA2验证设备查询</Name>
+      <Name>QA3验证审批与冲突阻止</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.4</WBS>
-      <OutlineNumber>3.4</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.6</WBS>
+      <OutlineNumber>3.6</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-13T14:00:00</Start>
-      <Finish>2026-11-16T12:00:00</Finish>
-      <Duration>PT6H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-17T15:00:00</Start>
+      <Finish>2026-11-18T15:00:00</Finish>
+      <Duration>PT8H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT6H0M0S</Work>
+      <Work>PT8H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>337.50</Cost>
-      <ResourceNames>QA</ResourceNames>
+      <Critical>0</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-17T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-18T15:00:00</EarlyFinish>
+      <LateStart>2026-11-25T15:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：QA；计划 1.00 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>21</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -522,24 +1040,40 @@
     <Task>
       <UID>23</UID>
       <ID>23</ID>
-      <Name>WP3申请审批与冲突阻止</Name>
+      <Name>WP4借出归还与逾期</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.5</WBS>
-      <OutlineNumber>3.5</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.7</WBS>
+      <OutlineNumber>3.7</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-13T14:00:00</Start>
-      <Finish>2026-11-17T14:00:00</Finish>
-      <Duration>PT16H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-17T15:00:00</Start>
+      <Finish>2026-11-19T10:00:00</Finish>
+      <Duration>PT12H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT16H0M0S</Work>
+      <Work>PT12H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>1300.00</Cost>
-      <ResourceNames>Dev</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-17T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-19T10:00:00</EarlyFinish>
+      <LateStart>2026-11-17T15:00:00</LateStart>
+      <LateFinish>2026-11-19T10:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：Dev；计划 1.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>21</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -547,24 +1081,40 @@
     <Task>
       <UID>24</UID>
       <ID>24</ID>
-      <Name>QA3验证审批与冲突阻止</Name>
+      <Name>QA4验证借还生命周期</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.6</WBS>
-      <OutlineNumber>3.6</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.8</WBS>
+      <OutlineNumber>3.8</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-17T14:00:00</Start>
-      <Finish>2026-11-18T14:00:00</Finish>
-      <Duration>PT8H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-19T10:00:00</Start>
+      <Finish>2026-11-19T17:00:00</Finish>
+      <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT8H0M0S</Work>
+      <Work>PT6H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>450.00</Cost>
-      <ResourceNames>QA</ResourceNames>
+      <Critical>0</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-19T10:00:00</EarlyStart>
+      <EarlyFinish>2026-11-19T17:00:00</EarlyFinish>
+      <LateStart>2026-11-25T17:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：QA；计划 0.75 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>23</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -572,24 +1122,40 @@
     <Task>
       <UID>25</UID>
       <ID>25</ID>
-      <Name>WP4借出归还与逾期</Name>
+      <Name>WP5统计与审计日志</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.7</WBS>
-      <OutlineNumber>3.7</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.9</WBS>
+      <OutlineNumber>3.9</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-17T14:00:00</Start>
-      <Finish>2026-11-19T10:00:00</Finish>
-      <Duration>PT12H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-19T10:00:00</Start>
+      <Finish>2026-11-23T12:00:00</Finish>
+      <Duration>PT18H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT12H0M0S</Work>
+      <Work>PT18H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>975.00</Cost>
-      <ResourceNames>Dev</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-19T10:00:00</EarlyStart>
+      <EarlyFinish>2026-11-23T12:00:00</EarlyFinish>
+      <LateStart>2026-11-19T10:00:00</LateStart>
+      <LateFinish>2026-11-23T12:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：Dev；计划 2.25 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>23</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -597,24 +1163,40 @@
     <Task>
       <UID>26</UID>
       <ID>26</ID>
-      <Name>QA4验证借还生命周期</Name>
+      <Name>QA5验证统计与审计</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.8</WBS>
-      <OutlineNumber>3.8</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.10</WBS>
+      <OutlineNumber>3.10</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-19T10:00:00</Start>
-      <Finish>2026-11-20T08:00:00</Finish>
+      <Priority>500</Priority>
+      <Start>2026-11-23T12:00:00</Start>
+      <Finish>2026-11-24T10:00:00</Finish>
       <Duration>PT6H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT6H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>337.50</Cost>
-      <ResourceNames>QA</ResourceNames>
+      <Critical>0</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-23T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-24T10:00:00</EarlyFinish>
+      <LateStart>2026-11-25T17:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：QA；计划 0.75 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>25</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -622,24 +1204,40 @@
     <Task>
       <UID>27</UID>
       <ID>27</ID>
-      <Name>WP5统计与审计日志</Name>
+      <Name>演示数据与演示脚本</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.9</WBS>
-      <OutlineNumber>3.9</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.11</WBS>
+      <OutlineNumber>3.11</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-19T10:00:00</Start>
-      <Finish>2026-11-23T12:00:00</Finish>
-      <Duration>PT18H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-23T12:00:00</Start>
+      <Finish>2026-11-24T15:00:00</Finish>
+      <Duration>PT10H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT18H0M0S</Work>
+      <Work>PT10H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>1462.50</Cost>
-      <ResourceNames>Dev</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-23T12:00:00</EarlyStart>
+      <EarlyFinish>2026-11-24T15:00:00</EarlyFinish>
+      <LateStart>2026-11-23T12:00:00</LateStart>
+      <LateFinish>2026-11-24T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：Dev；计划 1.25 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>25</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -647,24 +1245,40 @@
     <Task>
       <UID>28</UID>
       <ID>28</ID>
-      <Name>QA5验证统计与审计</Name>
+      <Name>执行期集成与演示准备</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.10</WBS>
-      <OutlineNumber>3.10</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>3.12</WBS>
+      <OutlineNumber>3.12</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-23T12:00:00</Start>
-      <Finish>2026-11-24T10:00:00</Finish>
-      <Duration>PT6H0M0S</Duration>
+      <Priority>500</Priority>
+      <Start>2026-11-24T15:00:00</Start>
+      <Finish>2026-11-25T10:00:00</Finish>
+      <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT6H0M0S</Work>
+      <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>337.50</Cost>
-      <ResourceNames>QA</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-24T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-25T10:00:00</EarlyFinish>
+      <LateStart>2026-11-24T15:00:00</LateStart>
+      <LateFinish>2026-11-25T10:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>27</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -672,49 +1286,74 @@
     <Task>
       <UID>29</UID>
       <ID>29</ID>
-      <Name>演示数据与演示脚本</Name>
+      <Name>4 监控</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.11</WBS>
-      <OutlineNumber>3.11</OutlineNumber>
-      <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-23T12:00:00</Start>
-      <Finish>2026-11-24T14:00:00</Finish>
-      <Duration>PT10H0M0S</Duration>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>4</WBS>
+      <OutlineNumber>4</OutlineNumber>
+      <OutlineLevel>1</OutlineLevel>
+      <Priority>500</Priority>
+      <Start>2026-11-13T15:00:00</Start>
+      <Finish>2026-11-25T15:00:00</Finish>
+      <Duration>PT64H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT10H0M0S</Work>
+      <Work>PT64H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
-      <Summary>0</Summary>
-      <Cost>812.50</Cost>
-      <ResourceNames>Dev</ResourceNames>
-      <PredecessorLink>
-        <PredecessorUID>27</PredecessorUID>
-        <Type>1</Type>
-        <LinkLag>0</LinkLag>
-        <LagFormat>7</LagFormat>
-      </PredecessorLink>
+      <Summary>1</Summary>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-13T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-25T15:00:00</EarlyFinish>
+      <LateStart>2026-11-24T15:00:00</LateStart>
+      <LateFinish>2026-11-25T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>阶段汇总</Notes>
+      <Manual>0</Manual>
     </Task>
     <Task>
       <UID>30</UID>
       <ID>30</ID>
-      <Name>执行期集成与演示准备</Name>
+      <Name>EVM数据点1与偏差分析</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>3.12</WBS>
-      <OutlineNumber>3.12</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>4.1</WBS>
+      <OutlineNumber>4.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-24T14:00:00</Start>
-      <Finish>2026-11-25T10:00:00</Finish>
+      <Priority>500</Priority>
+      <Start>2026-11-13T15:00:00</Start>
+      <Finish>2026-11-16T10:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>400.00</Cost>
-      <ResourceNames>PM</ResourceNames>
+      <Critical>0</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-13T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-16T10:00:00</EarlyFinish>
+      <LateStart>2026-11-24T15:00:00</LateStart>
+      <LateFinish>2026-11-25T10:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>29</PredecessorUID>
+        <PredecessorUID>19</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -722,24 +1361,47 @@
     <Task>
       <UID>31</UID>
       <ID>31</ID>
-      <Name>EVM数据点1与偏差分析</Name>
+      <Name>EVM数据点2与完工预测</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>4.1</WBS>
-      <OutlineNumber>4.1</OutlineNumber>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>4.2</WBS>
+      <OutlineNumber>4.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-13T14:00:00</Start>
-      <Finish>2026-11-16T10:00:00</Finish>
+      <Priority>500</Priority>
+      <Start>2026-11-25T10:00:00</Start>
+      <Finish>2026-11-25T15:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>400.00</Cost>
-      <ResourceNames>PM</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-25T10:00:00</EarlyStart>
+      <EarlyFinish>2026-11-25T15:00:00</EarlyFinish>
+      <LateStart>2026-11-25T10:00:00</LateStart>
+      <LateFinish>2026-11-25T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>21</PredecessorUID>
+        <PredecessorUID>30</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
+        <LinkLag>0</LinkLag>
+        <LagFormat>7</LagFormat>
+      </PredecessorLink>
+      <PredecessorLink>
+        <PredecessorUID>28</PredecessorUID>
+        <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -747,33 +1409,36 @@
     <Task>
       <UID>32</UID>
       <ID>32</ID>
-      <Name>EVM数据点2与完工预测</Name>
+      <Name>5 收尾</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
-      <WBS>4.2</WBS>
-      <OutlineNumber>4.2</OutlineNumber>
-      <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-25T10:00:00</Start>
-      <Finish>2026-11-25T14:00:00</Finish>
-      <Duration>PT4H0M0S</Duration>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
+      <WBS>5</WBS>
+      <OutlineNumber>5</OutlineNumber>
+      <OutlineLevel>1</OutlineLevel>
+      <Priority>500</Priority>
+      <Start>2026-11-25T15:00:00</Start>
+      <Finish>2026-11-26T15:00:00</Finish>
+      <Duration>PT8H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
-      <Work>PT4H0M0S</Work>
+      <Work>PT8H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
-      <Summary>0</Summary>
-      <Cost>400.00</Cost>
-      <ResourceNames>PM</ResourceNames>
-      <PredecessorLink>
-        <PredecessorUID>31</PredecessorUID>
-        <Type>1</Type>
-        <LinkLag>0</LinkLag>
-        <LagFormat>7</LagFormat>
-      </PredecessorLink>
-      <PredecessorLink>
-        <PredecessorUID>30</PredecessorUID>
-        <Type>1</Type>
-        <LinkLag>0</LinkLag>
-        <LagFormat>7</LagFormat>
-      </PredecessorLink>
+      <Summary>1</Summary>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-25T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-26T15:00:00</EarlyFinish>
+      <LateStart>2026-11-25T15:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>阶段汇总</Notes>
+      <Manual>0</Manual>
     </Task>
     <Task>
       <UID>33</UID>
@@ -781,21 +1446,37 @@
       <Name>验收演示与UAT</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
       <WBS>5.1</WBS>
       <OutlineNumber>5.1</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
-      <Start>2026-11-25T14:00:00</Start>
+      <Priority>500</Priority>
+      <Start>2026-11-25T15:00:00</Start>
       <Finish>2026-11-26T10:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>400.00</Cost>
-      <ResourceNames>PM</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-25T15:00:00</EarlyStart>
+      <EarlyFinish>2026-11-26T10:00:00</EarlyFinish>
+      <LateStart>2026-11-25T15:00:00</LateStart>
+      <LateFinish>2026-11-26T10:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
-        <PredecessorUID>32</PredecessorUID>
+        <PredecessorUID>31</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -806,21 +1487,37 @@
       <Name>经验教训报告</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
       <WBS>5.2</WBS>
       <OutlineNumber>5.2</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
+      <Priority>500</Priority>
       <Start>2026-11-26T10:00:00</Start>
-      <Finish>2026-11-26T14:00:00</Finish>
+      <Finish>2026-11-26T15:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>300.00</Cost>
-      <ResourceNames>BA</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-26T10:00:00</EarlyStart>
+      <EarlyFinish>2026-11-26T15:00:00</EarlyFinish>
+      <LateStart>2026-11-26T10:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：BA；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>33</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -831,21 +1528,37 @@
       <Name>最终报告与归档移交</Name>
       <Type>1</Type>
       <IsNull>0</IsNull>
+      <CreateDate>2026-11-02T08:00:00</CreateDate>
       <WBS>5.3</WBS>
       <OutlineNumber>5.3</OutlineNumber>
       <OutlineLevel>2</OutlineLevel>
+      <Priority>500</Priority>
       <Start>2026-11-26T10:00:00</Start>
-      <Finish>2026-11-26T14:00:00</Finish>
+      <Finish>2026-11-26T15:00:00</Finish>
       <Duration>PT4H0M0S</Duration>
       <DurationFormat>7</DurationFormat>
       <Work>PT4H0M0S</Work>
+      <ResumeValid>0</ResumeValid>
+      <EffortDriven>0</EffortDriven>
+      <Recurring>0</Recurring>
+      <OverAllocated>0</OverAllocated>
+      <Estimated>0</Estimated>
       <Milestone>0</Milestone>
       <Summary>0</Summary>
-      <Cost>400.00</Cost>
-      <ResourceNames>PM</ResourceNames>
+      <Critical>1</Critical>
+      <IsSubproject>0</IsSubproject>
+      <ExternalTask>0</ExternalTask>
+      <EarlyStart>2026-11-26T10:00:00</EarlyStart>
+      <EarlyFinish>2026-11-26T15:00:00</EarlyFinish>
+      <LateStart>2026-11-26T10:00:00</LateStart>
+      <LateFinish>2026-11-26T15:00:00</LateFinish>
+      <LevelingCanSplit>0</LevelingCanSplit>
+      <Notes>负责：PM；计划 0.50 人日</Notes>
+      <Manual>0</Manual>
       <PredecessorLink>
         <PredecessorUID>33</PredecessorUID>
         <Type>1</Type>
+        <CrossProject>0</CrossProject>
         <LinkLag>0</LinkLag>
         <LagFormat>7</LagFormat>
       </PredecessorLink>
@@ -857,40 +1570,322 @@
       <ID>1</ID>
       <Name>BA</Name>
       <Type>1</Type>
-      <StandardRate>600</StandardRate>
-      <StandardRateFormat>3</StandardRateFormat>
+      <IsNull>0</IsNull>
+      <Initials>BA</Initials>
+      <MaxUnits>1</MaxUnits>
+      <CanLevel>0</CanLevel>
+      <StandardRate>0</StandardRate>
+      <StandardRateFormat>2</StandardRateFormat>
+      <OvertimeRate>0</OvertimeRate>
+      <OvertimeRateFormat>2</OvertimeRateFormat>
+      <CostPerUse>0</CostPerUse>
+      <CalendarUID>1</CalendarUID>
     </Resource>
     <Resource>
       <UID>2</UID>
       <ID>2</ID>
       <Name>CCB</Name>
       <Type>1</Type>
-      <StandardRate>500</StandardRate>
-      <StandardRateFormat>3</StandardRateFormat>
+      <IsNull>0</IsNull>
+      <Initials>CCB</Initials>
+      <MaxUnits>1</MaxUnits>
+      <CanLevel>0</CanLevel>
+      <StandardRate>0</StandardRate>
+      <StandardRateFormat>2</StandardRateFormat>
+      <OvertimeRate>0</OvertimeRate>
+      <OvertimeRateFormat>2</OvertimeRateFormat>
+      <CostPerUse>0</CostPerUse>
+      <CalendarUID>1</CalendarUID>
     </Resource>
     <Resource>
       <UID>3</UID>
       <ID>3</ID>
       <Name>Dev</Name>
       <Type>1</Type>
-      <StandardRate>650</StandardRate>
-      <StandardRateFormat>3</StandardRateFormat>
+      <IsNull>0</IsNull>
+      <Initials>DEV</Initials>
+      <MaxUnits>1</MaxUnits>
+      <CanLevel>0</CanLevel>
+      <StandardRate>0</StandardRate>
+      <StandardRateFormat>2</StandardRateFormat>
+      <OvertimeRate>0</OvertimeRate>
+      <OvertimeRateFormat>2</OvertimeRateFormat>
+      <CostPerUse>0</CostPerUse>
+      <CalendarUID>1</CalendarUID>
     </Resource>
     <Resource>
       <UID>4</UID>
       <ID>4</ID>
       <Name>PM</Name>
       <Type>1</Type>
-      <StandardRate>800</StandardRate>
-      <StandardRateFormat>3</StandardRateFormat>
+      <IsNull>0</IsNull>
+      <Initials>PM</Initials>
+      <MaxUnits>1</MaxUnits>
+      <CanLevel>0</CanLevel>
+      <StandardRate>0</StandardRate>
+      <StandardRateFormat>2</StandardRateFormat>
+      <OvertimeRate>0</OvertimeRate>
+      <OvertimeRateFormat>2</OvertimeRateFormat>
+      <CostPerUse>0</CostPerUse>
+      <CalendarUID>1</CalendarUID>
     </Resource>
     <Resource>
       <UID>5</UID>
       <ID>5</ID>
       <Name>QA</Name>
       <Type>1</Type>
-      <StandardRate>450</StandardRate>
-      <StandardRateFormat>3</StandardRateFormat>
+      <IsNull>0</IsNull>
+      <Initials>QA</Initials>
+      <MaxUnits>1</MaxUnits>
+      <CanLevel>0</CanLevel>
+      <StandardRate>0</StandardRate>
+      <StandardRateFormat>2</StandardRateFormat>
+      <OvertimeRate>0</OvertimeRate>
+      <OvertimeRateFormat>2</OvertimeRateFormat>
+      <CostPerUse>0</CostPerUse>
+      <CalendarUID>1</CalendarUID>
     </Resource>
   </Resources>
+  <Assignments>
+    <Assignment>
+      <UID>1</UID>
+      <TaskUID>2</TaskUID>
+      <ResourceUID>1</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>2</UID>
+      <TaskUID>3</TaskUID>
+      <ResourceUID>1</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>3</UID>
+      <TaskUID>4</TaskUID>
+      <ResourceUID>1</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>4</UID>
+      <TaskUID>5</TaskUID>
+      <ResourceUID>2</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>5</UID>
+      <TaskUID>6</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>6</UID>
+      <TaskUID>8</TaskUID>
+      <ResourceUID>1</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT6H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>7</UID>
+      <TaskUID>9</TaskUID>
+      <ResourceUID>1</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT6H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>8</UID>
+      <TaskUID>10</TaskUID>
+      <ResourceUID>1</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>9</UID>
+      <TaskUID>11</TaskUID>
+      <ResourceUID>1</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT8H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>10</UID>
+      <TaskUID>12</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>11</UID>
+      <TaskUID>13</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT8H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>12</UID>
+      <TaskUID>14</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>13</UID>
+      <TaskUID>15</TaskUID>
+      <ResourceUID>2</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>14</UID>
+      <TaskUID>17</TaskUID>
+      <ResourceUID>3</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT16H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>15</UID>
+      <TaskUID>18</TaskUID>
+      <ResourceUID>5</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT6H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>16</UID>
+      <TaskUID>19</TaskUID>
+      <ResourceUID>3</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT10H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>17</UID>
+      <TaskUID>20</TaskUID>
+      <ResourceUID>5</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT6H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>18</UID>
+      <TaskUID>21</TaskUID>
+      <ResourceUID>3</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT16H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>19</UID>
+      <TaskUID>22</TaskUID>
+      <ResourceUID>5</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT8H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>20</UID>
+      <TaskUID>23</TaskUID>
+      <ResourceUID>3</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT12H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>21</UID>
+      <TaskUID>24</TaskUID>
+      <ResourceUID>5</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT6H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>22</UID>
+      <TaskUID>25</TaskUID>
+      <ResourceUID>3</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT18H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>23</UID>
+      <TaskUID>26</TaskUID>
+      <ResourceUID>5</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT6H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>24</UID>
+      <TaskUID>27</TaskUID>
+      <ResourceUID>3</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT10H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>25</UID>
+      <TaskUID>28</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>26</UID>
+      <TaskUID>30</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>27</UID>
+      <TaskUID>31</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>28</UID>
+      <TaskUID>33</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>29</UID>
+      <TaskUID>34</TaskUID>
+      <ResourceUID>1</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+    <Assignment>
+      <UID>30</UID>
+      <TaskUID>35</TaskUID>
+      <ResourceUID>4</ResourceUID>
+      <PercentWorkComplete>0</PercentWorkComplete>
+      <Units>1</Units>
+      <Work>PT4H0M0S</Work>
+    </Assignment>
+  </Assignments>
 </Project>
