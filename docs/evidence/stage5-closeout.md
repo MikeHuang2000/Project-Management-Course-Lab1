@@ -58,8 +58,8 @@
 | 监控 | 台账、EVM、追踪甘特图、状态报告 | `plan/`、`docs/evidence/stage3-log.md`、`stage4-monitor.md` |
 | 变更 | CR-01 影响分析、CCB 裁定、收尾追认；CR-02 二期裁定与 QA | `docs/evidence/cr01-impact.md`、`ccb-cr01.md`、`ccb-closeout.md`、`ccb-cr02.md`、`qa-wp6.md` |
 | 收尾 | QA 各包证据、UAT、本记录 | `docs/evidence/qa-wp*.md`、`uat.md`、本文件 |
-| 计划工具 | CPM/CCPM/EVM/甘特/网络图/XML 生成脚本 | `tools/pm_metrics.py`、`tools/session_stats.py` |
-| 可导入 MS Project | WBS 与工期 | `wbs/wbs.xml`（详细 30 任务）、`wbs/wbs-msp.xml`（整日版 20 任务，截图用） |
+| 计划工具 | CPM/CCPM/EVM/甘特/网络图/XML 生成脚本 | `tools/pm_metrics.py`、`tools/gen_cr02_gantt.py`、`tools/gen_cr02_msp.py`、`tools/merge_wbs.py`、`tools/session_stats.py` |
+| 可导入 MS Project | WBS 与工期 | `wbs/wbs.xml`（一期详细 30 任务）、`wbs/wbs-msp.xml`（一期整日版 20 任务，截图用）、`wbs/wbs-cr02-msp.xml`（二期 6 行，截图用）、`wbs/wbs-all-msp.xml`（一期 + 二期合并视图） |
 | 交付物 | 可运行原型 + 说明 | `src/`、`README.md` |
 
 说明：`wbs/wbs.xml` 是 30 任务的详细 WBS，保留完整结构与基线，供归档和追溯，
@@ -87,10 +87,12 @@
 | 代码 | `src/waitlist.py`、`db.py`（waitlists 表）、`main.py`（命令组） |
 | 测试 | 84 条全绿（一期 76 + 候补 8） |
 | 验收 | AC1–AC4 PASS（`qa-wp6.md`） |
+| 排期 | 2026-11-30 08:00 → 2026-12-02 12:00，2.5 天；关键路径 6.1→6.2→6.3→6.4→6.5 |
+| 计划产物 | `plan/tasks-cr02.csv`、`plan/schedule-cr02.md`、`plan/gantt-cr02.png`、`plan/track-cr02.png`、`wbs/wbs-cr02-msp.xml`、`wbs/wbs-all-msp.xml` |
 | 一期基线 / EVM | 不变：EV 15,800、AC 17,974.90、CPI 0.879、SPI 1.000、16/16 |
-| 二期成本 | 2.5 人日 / ¥1,475，不占一期储备，不计入一期 CPI/SPI |
+| 二期成本 | 2.5 人日 / ¥1,475，不占一期储备，不计入一期 CPI/SPI；二期 CPI/SPI 1.00 |
 
-证据：`ccb-cr02.md`、`qa-wp6.md`；契约见 `05-architecture.md` v1.1，RTM 见 `04-scope.md` §6。
+证据：`ccb-cr02.md`、`qa-wp6.md`；契约见 `05-architecture.md` v1.1，RTM 见 `04-scope.md` §6。二期 WBS 单独成文件，不并入一期 20 天截图版；`wbs/wbs-msp.xml` 仍保持 19.75 天。
 
 ## 6. 移交与遗留
 

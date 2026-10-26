@@ -1,0 +1,6 @@
+id,phase,name,resource,person_days,duration_days,predecessors,milestone
+6.1,6,CR-02影响分析与契约升版,BA,0.25,0.25,,0
+6.2,6,CCB变更裁定,CCB,0.5,0.5,6.1,0
+6.3,6,WP6候补登记与名单开发,Dev,1.0,1.0,6.2,0
+6.4,6,QA6候补验证与证据,QA,0.5,0.5,6.3,0
+6.5,6,CR-02文档与验收,PM,0.25,0.25,6.4,0

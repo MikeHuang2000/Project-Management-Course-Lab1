@@ -55,8 +55,14 @@ python -m unittest discover -s tests
 | `docs/` | 过程文档（商业论证、章程、范围、架构、WBS、进度、成本、风险质量、工作包） |
 | `docs/evidence/` | 各阶段收口记录、验收证据、变更与追认记录 |
 | `plan/` | 计划与台账（任务、人日、完成度、EVM、甘特图） |
-| `wbs/wbs.xml` | 30 任务详细 WBS（结构归档） |
-| `wbs/wbs-msp.xml` | 整日版 WBS（MS Project 截图用，19.75 天） |
+| `plan/tasks-cr02.csv` | 二期 CR-02 的 5 个任务（2.5 天，2026-11-30 起） |
+| `plan/schedule-cr02.md` | 二期排期表（ES/EF/关键路径） |
+| `plan/gantt-cr02.png` | 一期 + 二期组合甘特图（一期 18.75 天 + 二期 2.5 天） |
+| `plan/track-cr02.png` | 二期追踪甘特图（CPI/SPI 1.00） |
+| `wbs/wbs.xml` | 一期 30 任务详细 WBS（结构归档） |
+| `wbs/wbs-msp.xml` | 一期整日版 WBS（MS Project 截图用，19.75 天） |
+| `wbs/wbs-cr02-msp.xml` | 二期 WBS（MS Project 截图用，2.5 天） |
+| `wbs/wbs-all-msp.xml` | 一期 + 二期合并 WBS（单张截图可选） |
 
 ## 已知限制
 

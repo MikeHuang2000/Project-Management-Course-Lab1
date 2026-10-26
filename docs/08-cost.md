@@ -2,7 +2,7 @@
 
 | 文档 | 版本 | 编制 | 日期 | 数据源 |
 |---|---|---|---|---|
-| 08-cost | v1.0（基线） | PM | 2026-10-23 | `plan/tasks.csv`、`plan/rates.csv`、`tools/pm_metrics.py check` |
+| 08-cost | v1.1（一期基线 + CR-02 二期增量） | PM | 2026-10-24 | `plan/tasks.csv`、`plan/tasks-cr02.csv`、`plan/rates.csv`、`tools/pm_metrics.py check` |
 
 ## 1 估算方法
 
@@ -71,3 +71,16 @@
 ## 7 与 NPV 的一致性
 
 商业论证的 C0 = 17,800（基线 + 应急），与本文件 §3 一致；若实际成本超出 17,800，只有在管理储备内且经 CCB 批准时，NPV 结论才仍然成立（上限 19,700 对应组合敏感性下的回收期 12.6 个月，已在 `01-business-case.md` §5.4 记录）。
+
+## 8 二期 CR-02 增量成本
+
+| 角色 | 人日 | 金额 |
+|---|---|---|
+| BA（影响分析/契约） | 0.25 | 150 |
+| CCB（变更裁定） | 0.50 | 250 |
+| Dev（WP6） | 1.00 | 650 |
+| QA（QA6） | 0.50 | 225 |
+| PM（文档/验收） | 0.25 | 200 |
+| **合计** | **2.50** | **1,475** |
+
+二期成本单列，不占一期 BAC 15,800、应急 2,000 或管理储备 1,900，不计入一期 CPI/SPI；脚本校验 `python tools/pm_metrics.py check --tasks plan/tasks-cr02.csv` 输出与上表一致。二期自身 PV=EV=AC=1,475、CPI=SPI=1.00（`plan/track-cr02.png`）。
