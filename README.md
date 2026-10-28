@@ -4,6 +4,8 @@
 
 实验报告（Markdown，可自行转 PDF）：[`实验报告.md`](实验报告.md)。
 
+子代理派单提示词汇总（26 个子代理会话、30 条原文）：[`docs/agent-prompts.md`](docs/agent-prompts.md)。
+
 ## 快速开始
 
 ```powershell
