@@ -76,7 +76,7 @@
 
 - MS Project：`wbs/wbs.xml`（一期 30 任务详细版）、`wbs/wbs-msp.xml`（一期整日版 20 任务 / 19.75 天，截图用）、`wbs/wbs-cr02-msp.xml`（二期 6 行：1 个汇总 + 5 个任务 / 2.5 天，截图用）、`wbs/wbs-all-msp.xml`（一期 + 二期合并视图 31 行）。日期与工期已按工作日历算好，截图由用户导入后完成。
 - 甘特图：`plan/gantt.png`（一期，红=关键路径）、`plan/gantt-cr02.png`（一期 + 二期组合）、`plan/track-cr02.png`（二期追踪，CPI/SPI 1.00）。
-- 依赖图：`plan/network.png`，PDM/AON 前导图（节点含工期与 ES、浮动，红线为关键路径，QA 与旁支分道）。本项目只用 PDM：PMBOK 第 6 版起以 PDM 为准，ADM 需要引入虚活动、图会多出 10 余个哑节点，对 30 条任务的读图没有增益，故不出 ADM。两者画的是同一套依赖，结论一致。
+- 依赖图：`plan/network.png`，Graphviz 生成的 PDM/AON 前导图，方向从左到右（`rankdir=LR`）。节点含工期、ES/EF/LS/LF 与总浮动；箭头标注依赖类型，本项目全部为 FS，标题图例同时列出 FS/SS/FF/SF 四种依赖的含义；红线为关键路径，末端接项目缓冲 PB 4.69 天表示关键链。源文件 `plan/network.dot`，生成脚本 `tools/gen_network_graphviz.py`（复用 `plan/tasks.csv` 与 `pm_metrics.py` 的 CPM 结果）；旧版 matplotlib 图已归档为 `plan/network_old.png`。本项目只用 PDM：PMBOK 第 6 版起以 PDM 为准，ADM 需要引入虚活动、图会多出 10 余个哑节点，对 30 条任务的读图没有增益，故不出 ADM。两者画的是同一套依赖，结论一致。
 - 变更：CR-01 原裁定延后，CR-02 已按二期增量交付；一期基线不重算、不插入任务，二期单独用 §9 的 5 个任务与 2.5 天排期。
 
 ## 8 变更预留（CR-01 → CR-02）
